@@ -26,6 +26,3 @@ typings/
 
 # Production files
 dist
-
-# Gsap
-.npmrc
