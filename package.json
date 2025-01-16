@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",
-    "gsap": "npm:@gsap/shockingly@^3.12.5",
+    "gsap": "npm:@gsap/shockingly@^3.12.7",
     "lenis": "^1.0.45",
     "swiper": "^11.1.1"
   },

@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.40.0
     version: 0.40.0
   gsap:
-    specifier: npm:@gsap/shockingly@^3.12.5
-    version: /@gsap/shockingly@3.12.5
+    specifier: npm:@gsap/shockingly@^3.12.7
+    version: /@gsap/shockingly@3.12.7
   lenis:
     specifier: ^1.0.45
     version: 1.0.45
@@ -558,8 +558,8 @@ packages:
       typescript: 5.2.2
     dev: true
 
-  /@gsap/shockingly@3.12.5:
-    resolution: {integrity: sha512-JoZp6iYvOC+wkwl8zfXSqSrYCcuzTntaULCL08YMa1vonrYcr9D0K3EUe9PNpw7FYK1chjSwjjgcw3zS/O2SWg==}
+  /@gsap/shockingly@3.12.7:
+    resolution: {integrity: sha512-uvbaCkQCdjy7bNvzBWE21dVFa32uqBzCZfYgNRikcFn2SqyQ0/fDUJkfAtme9tdkv3n+niBpdGraLjVA26tTWQ==}
     dev: false
 
   /@humanwhocodes/config-array@0.11.13:
