@@ -1,16 +1,12 @@
-import { greetUser } from '$utils/greet';
 import { accordion } from '$utils/accordion';
 import { gsapBasicAnimations } from '$utils/gsapBasicAnimations';
-import { lenisGsap } from '$utils/lenisGsap';
 import { swiperSliders } from '$utils/swiperSliders';
-import { gsap } from 'gsap';
+import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
-  const name = 'John Doe';
-  greetUser(name);
+  gsapSmoothScroll();
   accordion();
-  gsapBasicAnimations(gsap, ScrollTrigger);
-  lenisGsap(gsap, ScrollTrigger);
+  gsapBasicAnimations();
   swiperSliders();
 });
