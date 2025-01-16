@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.2
+
+### Patch Changes
+
+- 634339c: swap smooth scroll
+
 ## 1.0.1
 
 ### Patch Changes
