@@ -1,12 +1,14 @@
 import { accordion } from '$utils/accordion';
-import { gsapBasicAnimations } from '$utils/gsapBasicAnimations';
-import { swiperSliders } from '$utils/swiperSliders';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
-
-window.Webflow ||= [];
+import { homeMain } from '$utils/homeMain';
+import { swiperSliders } from '$utils/swiperSliders';
+window.Webflow = window.Webflow || [];
 window.Webflow.push(() => {
   gsapSmoothScroll();
   accordion();
-  gsapBasicAnimations();
   swiperSliders();
+  // wait page load
+  setTimeout(() => {
+    homeMain();
+  }, 100);
 });

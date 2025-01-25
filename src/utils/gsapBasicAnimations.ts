@@ -1,6 +1,8 @@
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export const gsapBasicAnimations = () => {
   gsap.set('.slide-in', { y: 25, opacity: 0 });
   ScrollTrigger.batch('.slide-in', {
