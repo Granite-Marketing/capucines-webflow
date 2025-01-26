@@ -1,4 +1,5 @@
 import { accordion } from '$utils/accordion';
+import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
@@ -15,4 +16,5 @@ window.Webflow.push(() => {
     linesAnimation();
     textMask();
   }, 100);
+  experiences();
 });

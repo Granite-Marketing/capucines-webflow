@@ -12,7 +12,7 @@ importers:
         specifier: ^0.40.0
         version: 0.40.0
       gsap:
-        specifier: npm:@gsap/shockingly@^3.12.7
+        specifier: ^3.12.7
         version: '@gsap/shockingly@3.12.7'
       lenis:
         specifier: ^1.0.45
