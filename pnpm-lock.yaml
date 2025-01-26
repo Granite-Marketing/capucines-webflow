@@ -17,6 +17,9 @@ importers:
       lenis:
         specifier: ^1.0.45
         version: 1.0.45
+      split-type:
+        specifier: ^0.3.4
+        version: 0.3.4
       swiper:
         specifier: ^11.1.1
         version: 11.1.1
@@ -1573,6 +1576,9 @@ packages:
 
   spdx-license-ids@3.0.16:
     resolution: {integrity: sha512-eWN+LnM3GR6gPu35WxNgbGl8rmY1AEmoMDvL/QD6zYmPWgywxWqJWNdLGT+ke8dKNWrcYgYjPpG5gbTfghP8rw==}
+
+  split-type@0.3.4:
+    resolution: {integrity: sha512-otEk9vnD8qwfLsk3Lx0gz+qRkNIJCx0mlyL47ImP/DjMuV39d75Lpfwjn9fHteDRz0aoOblSzQjSNT9+Sswxcg==}
 
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
@@ -3443,6 +3449,8 @@ snapshots:
       spdx-license-ids: 3.0.16
 
   spdx-license-ids@3.0.16: {}
+
+  split-type@0.3.4: {}
 
   sprintf-js@1.0.3: {}
 
