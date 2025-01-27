@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.3
+
+### Patch Changes
+
+- 4f304db: animation updates
+
 ## 1.0.2
 
 ### Patch Changes
