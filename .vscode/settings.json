@@ -3,5 +3,6 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "vscode.tsc.compiler.alertOnError": "never"
+  "vscode.tsc.compiler.alertOnError": "never",
+  "vscode.tsc.compiler.alertTSConfigChanges": "never"
 }

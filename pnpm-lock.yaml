@@ -20,6 +20,9 @@ importers:
       split-type:
         specifier: ^0.3.4
         version: 0.3.4
+      splitting:
+        specifier: ^1.1.0
+        version: 1.1.0
       swiper:
         specifier: ^11.1.1
         version: 11.1.1
@@ -39,6 +42,9 @@ importers:
       '@playwright/test':
         specifier: ^1.39.0
         version: 1.39.0
+      '@types/splitting':
+        specifier: ^1.0.6
+        version: 1.0.6
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.18.0(@typescript-eslint/parser@6.10.0(eslint@8.53.0)(typescript@5.2.2))(eslint@8.53.0)(typescript@5.2.2)
@@ -372,6 +378,9 @@ packages:
 
   '@types/semver@7.5.5':
     resolution: {integrity: sha512-+d+WYC1BxJ6yVOgUgzK8gWvp5qF8ssV5r4nsDcZWKRWcDQLQ619tvWAxJQYGgBrO1MnLJC7a5GtiYsAoQ47dJg==}
+
+  '@types/splitting@1.0.6':
+    resolution: {integrity: sha512-sa2UEbnCEP4n9QHxyRDB5VgaSq2J5swWhePA38WRKIHg+yLKQLMWYSS4utEhv/qQ+5o9w6cS69/Y8oPolJxF+w==}
 
   '@typescript-eslint/eslint-plugin@7.18.0':
     resolution: {integrity: sha512-94EQTWZ40mzBc42ATNIBimBEDltSJ9RQHCC8vc/PDbxi4k8dVwUAv4o98dk50M1zB+JGFxp43FP7f8+FP8R6Sw==}
@@ -1580,6 +1589,9 @@ packages:
   split-type@0.3.4:
     resolution: {integrity: sha512-otEk9vnD8qwfLsk3Lx0gz+qRkNIJCx0mlyL47ImP/DjMuV39d75Lpfwjn9fHteDRz0aoOblSzQjSNT9+Sswxcg==}
 
+  splitting@1.1.0:
+    resolution: {integrity: sha512-6Tj+4mvlSti4DUu1yl0PnkHIIoLchFYJHqz2DnwYkvEehXbjrR2epa4ds/xdto6ZdZsC+NP5IOOehi9VGjNlMQ==}
+
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
@@ -2158,6 +2170,8 @@ snapshots:
   '@types/normalize-package-data@2.4.4': {}
 
   '@types/semver@7.5.5': {}
+
+  '@types/splitting@1.0.6': {}
 
   '@typescript-eslint/eslint-plugin@7.18.0(@typescript-eslint/parser@6.10.0(eslint@8.53.0)(typescript@5.2.2))(eslint@8.53.0)(typescript@5.2.2)':
     dependencies:
@@ -3451,6 +3465,8 @@ snapshots:
   spdx-license-ids@3.0.16: {}
 
   split-type@0.3.4: {}
+
+  splitting@1.1.0: {}
 
   sprintf-js@1.0.3: {}
 

@@ -23,9 +23,9 @@ function linesAnimation() {
 
     ScrollTrigger.create({
       trigger: line,
-      start: '0% 40%',
-      end: '100% 40%',
-      markers: false,
+      start: '0% 65%',
+      end: '100% 65%',
+      markers: true,
       scrub: true,
       animation: gsap.to(innerLine, { duration: 1, scaleY: 1 }),
     });
