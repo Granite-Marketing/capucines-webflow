@@ -1,20 +1,19 @@
 import Swiper from 'swiper';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 
 const isMobile = window.matchMedia('(max-width: 767px)');
 const swiperArr = [];
+const experienceItems = document.querySelectorAll('.experiences_item-gallery');
 
 export const experiences = () => {
-  const experienceItems = document.querySelectorAll('.experiences_item-gallery');
+  if (isMobile.matches) {
+    console.log('init swiper');
+    experienceSwiper();
+  } else {
+    defaultHighlights();
+  }
 
   experienceItems?.forEach((subcollection) => {
-    if (isMobile.matches) {
-      experienceSwiper();
-    } else {
-      const defaultLabel = subcollection.querySelector('.experiences_subcontent');
-      updateCollectionHighlights(subcollection, defaultLabel);
-    }
-
     subcollection.addEventListener('mouseover', (event) => {
       if (isMobile.matches) return;
       const label = event.target?.closest('.experiences_subcontent');
@@ -24,6 +23,7 @@ export const experiences = () => {
   });
 
   isMobile.addEventListener('change', function () {
+    console.log('change');
     experienceSwiper();
   });
 };
@@ -47,6 +47,13 @@ const highlightExperience = (figure, label, highlight = true) => {
   }
 };
 
+const defaultHighlights = () => {
+  experienceItems?.forEach((subcollection) => {
+    const defaultLabel = subcollection.querySelector('.experiences_subcontent');
+    updateCollectionHighlights(subcollection, defaultLabel);
+  });
+};
+
 const experienceSwiper = () => {
   if (isMobile.matches) {
     const sliders = document.querySelectorAll('.experiences_subcollection-wrap.swiper');
@@ -54,6 +61,10 @@ const experienceSwiper = () => {
 
     sliders.forEach((slider) => {
       const sliderItems = slider.querySelectorAll('.experiences_subitem');
+      const pagination = slider
+        .closest('.experiences_subcollection-wrap-wrap')
+        ?.querySelector('.experiences_subcollection-pagination');
+
       sliderItems.forEach((item) => {
         const itemLabel = item.querySelector('.experiences_subcontent');
         const figure = item.querySelector('.experiences_subfigure');
@@ -61,18 +72,21 @@ const experienceSwiper = () => {
       });
 
       const swiper = new Swiper(slider, {
-        modules: [Autoplay],
+        modules: [Autoplay, Pagination],
         loop: true,
         autoplay: true,
-        speed: 1000,
-        slidesPerView: 1,
         grabCursor: true,
+        pagination: {
+          el: pagination,
+        },
+        slidesPerView: 1,
       });
       console.log('swiper created');
-
+      console.log(slider);
       swiperArr.push(swiper);
     });
   } else {
+    defaultHighlights();
     swiperArr.forEach((swiper) => {
       swiper.destroy();
       console.log('swiper destroyed');
