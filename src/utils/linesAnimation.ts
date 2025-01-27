@@ -25,7 +25,7 @@ function linesAnimation() {
       trigger: line,
       start: '0% 65%',
       end: '100% 65%',
-      markers: true,
+      markers: false,
       scrub: true,
       animation: gsap.to(innerLine, { duration: 1, scaleY: 1 }),
     });
