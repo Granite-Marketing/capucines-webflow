@@ -24,7 +24,15 @@ export const experiences = () => {
 
   isMobile.addEventListener('change', function () {
     console.log('change');
-    experienceSwiper();
+    if (isMobile.matches) {
+      experienceSwiper();
+    } else {
+      defaultHighlights();
+      swiperArr.forEach((swiper) => {
+        swiper.destroy();
+        console.log('swiper destroyed');
+      });
+    }
   });
 };
 
@@ -55,41 +63,32 @@ const defaultHighlights = () => {
 };
 
 const experienceSwiper = () => {
-  if (isMobile.matches) {
-    const sliders = document.querySelectorAll('.experiences_subcollection-wrap.swiper');
-    if (!sliders) return;
+  const sliders = document.querySelectorAll('.experiences_subcollection-wrap.swiper');
+  if (!sliders) return;
 
-    sliders.forEach((slider) => {
-      const sliderItems = slider.querySelectorAll('.experiences_subitem');
-      const pagination = slider
-        .closest('.experiences_subcollection-wrap-wrap')
-        ?.querySelector('.experiences_subcollection-pagination');
+  sliders.forEach((slider) => {
+    const sliderItems = slider.querySelectorAll('.experiences_subitem');
+    const pagination = slider
+      .closest('.experiences_subcollection-wrap-wrap')
+      ?.querySelector('.experiences_subcollection-pagination');
 
-      sliderItems.forEach((item) => {
-        const itemLabel = item.querySelector('.experiences_subcontent');
-        const figure = item.querySelector('.experiences_subfigure');
-        highlightExperience(figure, itemLabel, true);
-      });
-
-      const swiper = new Swiper(slider, {
-        modules: [Autoplay, Pagination],
-        loop: true,
-        autoplay: true,
-        grabCursor: true,
-        pagination: {
-          el: pagination,
-        },
-        slidesPerView: 1,
-      });
-      console.log('swiper created');
-      console.log(slider);
-      swiperArr.push(swiper);
+    sliderItems.forEach((item) => {
+      const itemLabel = item.querySelector('.experiences_subcontent');
+      const figure = item.querySelector('.experiences_subfigure');
+      highlightExperience(figure, itemLabel, true);
     });
-  } else {
-    defaultHighlights();
-    swiperArr.forEach((swiper) => {
-      swiper.destroy();
-      console.log('swiper destroyed');
+
+    const swiper = new Swiper(slider, {
+      modules: [Autoplay, Pagination],
+      loop: true,
+      autoplay: true,
+      grabCursor: true,
+      pagination: {
+        el: pagination,
+      },
+      slidesPerView: 1,
     });
-  }
+    console.log('swiper created');
+    swiperArr.push(swiper);
+  });
 };
