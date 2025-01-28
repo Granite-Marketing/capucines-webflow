@@ -3,6 +3,7 @@ import { gsapBasicAnimations } from '$utils/gsapBasicAnimations';
 import { swiperSliders } from '$utils/swiperSliders';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { experiences } from '$utils/experiences';
+import { stickyHero } from '$utils/stickyHero';
 
 window.Webflow ||= [];
 window.Webflow.push(() => {
@@ -11,4 +12,5 @@ window.Webflow.push(() => {
   gsapBasicAnimations();
   swiperSliders();
   experiences();
+  stickyHero();
 });
