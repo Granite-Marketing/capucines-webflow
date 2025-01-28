@@ -12,35 +12,40 @@ export const stickyHero = () => {
 
   isMobile.addEventListener('change', function () {
     console.log('change');
-    stickyHeroSwiper();
+    if (isMobile.matches) {
+      stickyHeroSwiper();
+    } else {
+      swiperArr.forEach((swiper) => {
+        swiper.destroy();
+        console.log('swiper destroyed');
+
+        desktopStickyHero();
+      });
+    }
   });
 };
 
+const desktopStickyHero = () => {
+  // TO DO
+};
+
 const stickyHeroSwiper = () => {
-  if (isMobile.matches) {
-    const block = document.querySelector('.sticky-hero_images-side');
-    if (!block) return;
+  const block = document.querySelector('.sticky-hero_images-side');
+  if (!block) return;
 
-    const slider = block.querySelector('.swiper');
-    const pagination = block.querySelector('.sticky-hero_pagination');
+  const slider = block.querySelector('.swiper');
+  const pagination = block.querySelector('.sticky-hero_pagination');
 
-    const swiper = new Swiper(slider, {
-      modules: [Autoplay, Pagination],
-      loop: true,
-      autoplay: true,
-      grabCursor: true,
-      pagination: {
-        el: pagination,
-      },
-      slidesPerView: 1,
-    });
-    console.log('swiper created');
-    console.log(slider);
-    swiperArr.push(swiper);
-  } else {
-    swiperArr.forEach((swiper) => {
-      swiper.destroy();
-      console.log('swiper destroyed');
-    });
-  }
+  const swiper = new Swiper(slider, {
+    modules: [Autoplay, Pagination],
+    loop: true,
+    autoplay: true,
+    grabCursor: true,
+    pagination: {
+      el: pagination,
+    },
+    slidesPerView: 1,
+  });
+  console.log('swiper created');
+  swiperArr.push(swiper);
 };
