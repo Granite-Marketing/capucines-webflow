@@ -4,6 +4,7 @@ import { SplitText } from 'gsap/all';
 gsap.registerPlugin(SplitText);
 
 export const homeMain = () => {
+  if (!document.querySelector('.section_hero')) return;
   const splitText = new SplitText('.hero_title2');
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');

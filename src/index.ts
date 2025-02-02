@@ -3,6 +3,7 @@ import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
+import { adjustSubLinks } from '$utils/nav';
 import { stickyHero } from '$utils/stickyHero';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
@@ -17,7 +18,7 @@ window.Webflow.push(() => {
     homeMain();
     linesAnimation();
     textMask();
+    stickyHero();
+    experiences();
   }, 100);
-  experiences();
-  stickyHero();
 });
