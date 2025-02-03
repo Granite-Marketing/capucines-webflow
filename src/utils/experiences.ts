@@ -40,18 +40,31 @@ const updateCollectionHighlights = (collection, label) => {
   const items = collection.querySelectorAll('.experiences_subitem');
   items?.forEach((item) => {
     const itemLabel = item.querySelector('.experiences_subcontent');
-    const figure = item.querySelector('.experiences_subfigure');
-    highlightExperience(figure, itemLabel, label == itemLabel);
+    highlightExperience(item, label == itemLabel);
   });
 };
 
-const highlightExperience = (figure, label, highlight = true) => {
+const highlightExperience = (item, highlight = true) => {
+  const label = item.querySelector('.experiences_subcontent');
+  const figure = item.querySelector('.experiences_subfigure');
+  const content = item.querySelector('.experiences_item-content');
+  const mainHeading = item.querySelector('.experiences_item-header.is-desk');
   if (highlight) {
     figure.style.opacity = 1;
     label.style.fontStyle = 'italic';
+
+    content.style.opacity = 1;
+    content.style.pointerEvents = 'auto';
+
+    mainHeading.style.opacity = 1;
+    mainHeading.style.pointerEvents = 'auto';
   } else {
     figure.style.opacity = 0;
     label.style.fontStyle = 'normal';
+    content.style = {};
+
+    mainHeading.style.opacity = 0;
+    mainHeading.style.pointerEvents = 'none';
   }
 };
 
@@ -69,13 +82,11 @@ const experienceSwiper = () => {
   sliders.forEach((slider) => {
     const sliderItems = slider.querySelectorAll('.experiences_subitem');
     const pagination = slider
-      .closest('.experiences_subcollection-wrap-wrap')
+      .closest('.experiences_item-gallery')
       ?.querySelector('.experiences_subcollection-pagination');
 
     sliderItems.forEach((item) => {
-      const itemLabel = item.querySelector('.experiences_subcontent');
-      const figure = item.querySelector('.experiences_subfigure');
-      highlightExperience(figure, itemLabel, true);
+      highlightExperience(item, true);
     });
 
     const swiper = new Swiper(slider, {
