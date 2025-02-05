@@ -6,6 +6,7 @@ import { linesAnimation } from '$utils/linesAnimation';
 // import { adjustSubLinks } from '$utils/nav';
 import { roomIndiv } from '$utils/roomIndiv';
 import { stickyHero } from '$utils/stickyHero';
+import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
 window.Webflow = window.Webflow || [];
@@ -22,5 +23,6 @@ window.Webflow.push(() => {
     stickyHero();
     experiences();
     roomIndiv();
+    stickySection();
   }, 100);
 });
