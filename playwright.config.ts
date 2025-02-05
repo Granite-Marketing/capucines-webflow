@@ -11,7 +11,7 @@ declare const process: {
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './tests',
+  // testDir: './tests',
 
   /* Maximum time one test can run for. */
   timeout: 30 * 1000,

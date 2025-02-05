@@ -1,10 +1,11 @@
 import { gsap } from 'gsap';
-import { SplitText } from 'gsap/all';
+// import { SplitText } from 'gsap/all';
+import SplitType from 'split-type';
 
-gsap.registerPlugin(SplitText);
+// gsap.registerPlugin(SplitText);
 
 export const homeMain = () => {
-  const splitText = new SplitText('.hero_title2');
+  const splitText = new SplitType('.hero_title2', { types: 'chars,words,lines', tagName: 'span' });
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
   gsap.set(splitText.lines, {
@@ -12,6 +13,18 @@ export const homeMain = () => {
   });
   gsap.set(splitText.chars, {
     yPercent: 100,
+  });
+
+  // Ensure all words maintain inline-block display
+  splitText.words?.forEach((word) => {
+    word.style.display = 'inline-block';
+    word.style.whiteSpace = 'normal';
+  });
+
+  // Make lines behave as blocks but preserve inline flow
+  splitText.lines?.forEach((line) => {
+    line.style.display = 'inline-block';
+    line.style.whiteSpace = 'nowrap';
   });
   gsap.set(heroFigure1, {
     overflow: 'hidden',
