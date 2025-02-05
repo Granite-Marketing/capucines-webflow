@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.4
+
+### Patch Changes
+
+- 49239e7: animation updaates
+
 ## 1.0.3
 
 ### Patch Changes

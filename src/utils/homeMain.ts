@@ -5,6 +5,7 @@ import SplitType from 'split-type';
 // gsap.registerPlugin(SplitText);
 
 export const homeMain = () => {
+  if (!document.querySelector('.section_hero')) return;
   const splitText = new SplitType('.hero_title2', { types: 'chars,words,lines', tagName: 'span' });
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
