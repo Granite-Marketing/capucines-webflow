@@ -1,3 +1,3 @@
-// interface Window {
-//   Webflow: Array<() => void>;
-// }
+interface Window {
+  Webflow: Array<() => void>;
+}

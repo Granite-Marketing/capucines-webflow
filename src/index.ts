@@ -3,7 +3,7 @@ import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
-import { adjustSubLinks } from '$utils/nav';
+// import { adjustSubLinks } from '$utils/nav';
 import { roomIndiv } from '$utils/roomIndiv';
 import { stickyHero } from '$utils/stickyHero';
 import { swiperSliders } from '$utils/swiperSliders';
