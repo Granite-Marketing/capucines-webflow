@@ -11,19 +11,18 @@ export const stickySection = () => {
   );
 
   const imagesArray = Array.from(stickyImages).reverse();
-  const checkPointsArray = Array.from(checkPoints).reverse();
 
   gsap.set(imagesArray, { opacity: 0 });
   gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
-  gsap.set(checkPointsArray, { backgroundColor: 'transparent' });
-  gsap.set(checkPointsArray[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
+  gsap.set(checkPoints, { backgroundColor: 'transparent' });
+  gsap.set(checkPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: stickySections,
       end: '+=400%',
       pin: true,
-      markers: true,
+      markers: false,
       scrub: true,
     },
   });
@@ -48,7 +47,7 @@ export const stickySection = () => {
       );
 
       tl.to(
-        checkPointsArray[index],
+        checkPoints[index],
         {
           backgroundColor: 'transparent',
           duration: stepDuration,
@@ -56,7 +55,7 @@ export const stickySection = () => {
         '<'
       );
       tl.to(
-        checkPointsArray[index + 1],
+        checkPoints[index + 1],
         {
           backgroundColor: '#FFFFFF',
           duration: stepDuration,
