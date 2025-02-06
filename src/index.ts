@@ -3,18 +3,19 @@ import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
-// import { adjustSubLinks } from '$utils/nav';
 import { roomIndiv } from '$utils/roomIndiv';
 import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+import { header } from '$utils/header';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
   gsapSmoothScroll();
   accordion();
   swiperSliders();
+  header();
   // wait page load
   setTimeout(() => {
     homeMain();
