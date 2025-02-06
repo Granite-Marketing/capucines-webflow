@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.5
+
+### Patch Changes
+
+- ed1426d: add nav animaation
+
 ## 1.0.4
 
 ### Patch Changes
