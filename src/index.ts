@@ -1,4 +1,5 @@
 import { accordion } from '$utils/accordion';
+import { buttonAnimation } from '$utils/buttonAnimation';
 import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
@@ -24,5 +25,6 @@ window.Webflow.push(() => {
     experiences();
     roomIndiv();
     stickySection();
+    buttonAnimation();
   }, 100);
 });
