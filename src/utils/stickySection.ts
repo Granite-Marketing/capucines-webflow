@@ -10,58 +10,62 @@ export const stickySection = () => {
     '.sticky-hero_pagination .sticky-hero_pagination-bullet'
   );
 
-  const imagesArray = Array.from(stickyImages).reverse();
+  const mm = gsap.matchMedia();
 
-  gsap.set(imagesArray, { opacity: 0 });
-  gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
-  gsap.set(checkPoints, { backgroundColor: 'transparent' });
-  gsap.set(checkPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
+  mm.add('(min-width: 768px)', () => {
+    const imagesArray = Array.from(stickyImages).reverse();
 
-  const tl = gsap.timeline({
-    scrollTrigger: {
-      trigger: stickySections,
-      end: '+=400%',
-      pin: true,
-      markers: false,
-      scrub: true,
-    },
-  });
+    gsap.set(imagesArray, { opacity: 0 });
+    gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
+    gsap.set(checkPoints, { backgroundColor: 'transparent' });
+    gsap.set(checkPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
 
-  // Calculate duration for each image transition
-  const stepDuration = 1 / (imagesArray.length - 1);
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: stickySections,
+        end: '+=400%',
+        pin: true,
+        markers: false,
+        scrub: true,
+      },
+    });
 
-  imagesArray.forEach((img, index) => {
-    if (index < imagesArray.length - 1) {
-      // Skip the first image (last in original order)
-      tl.to(img, {
-        opacity: 0,
-        duration: stepDuration,
-      });
-      tl.to(
-        imagesArray[index + 1],
-        {
-          opacity: 1,
+    // Calculate duration for each image transition
+    const stepDuration = 1 / (imagesArray.length - 1);
+
+    imagesArray.forEach((img, index) => {
+      if (index < imagesArray.length - 1) {
+        // Skip the first image (last in original order)
+        tl.to(img, {
+          opacity: 0,
           duration: stepDuration,
-        },
-        '<'
-      );
+        });
+        tl.to(
+          imagesArray[index + 1],
+          {
+            opacity: 1,
+            duration: stepDuration,
+          },
+          '<'
+        );
 
-      tl.to(
-        checkPoints[index],
-        {
-          backgroundColor: 'transparent',
-          duration: stepDuration,
-        },
-        '<'
-      );
-      tl.to(
-        checkPoints[index + 1],
-        {
-          backgroundColor: '#FFFFFF',
-          duration: stepDuration,
-        },
-        '<'
-      );
-    }
+        tl.to(
+          checkPoints[index],
+          {
+            backgroundColor: 'transparent',
+            duration: stepDuration,
+          },
+          '<'
+        );
+        tl.to(
+          checkPoints[index + 1],
+          {
+            backgroundColor: '#FFFFFF',
+            duration: stepDuration,
+          },
+          '<'
+        );
+      }
+    });
   });
 };
