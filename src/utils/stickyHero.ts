@@ -34,7 +34,7 @@ const stickyHeroSwiper = () => {
   if (!block) return;
 
   const slider = block.querySelector('.swiper');
-  const pagination = block.querySelector('.sticky-hero_pagination');
+  const pagination = block.querySelector('.sticky-hero_pagination.is-mob');
 
   const swiper = new Swiper(slider, {
     modules: [Autoplay, Pagination],

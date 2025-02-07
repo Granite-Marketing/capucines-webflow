@@ -1,10 +1,12 @@
 import { accordion } from '$utils/accordion';
+import { bgAccordion } from '$utils/bgAccordion';
 import { buttonAnimation } from '$utils/buttonAnimation';
 import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
 import { roomIndiv } from '$utils/roomIndiv';
+import { slidersSections } from '$utils/slidersSections';
 import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
@@ -25,6 +27,8 @@ window.Webflow.push(() => {
     stickyHero();
     experiences();
     roomIndiv();
+    slidersSections();
+    bgAccordion();
     stickySection();
     buttonAnimation();
   }, 100);
