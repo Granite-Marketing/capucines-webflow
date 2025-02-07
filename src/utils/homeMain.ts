@@ -1,18 +1,43 @@
 import { gsap } from 'gsap';
-import { SplitText } from 'gsap/all';
+import SplitType from 'split-type';
+// This an attempt to split the text but it doesn't work
+// import { nestedLineSplit } from './gsapNestedLineSplit';
 
-gsap.registerPlugin(SplitText);
+gsap.registerPlugin(SplitType);
 
 export const homeMain = () => {
   if (!document.querySelector('.section_hero')) return;
-  const splitText = new SplitText('.hero_title2');
+
+  // This an attempt to split the text but it doesn't work
+  // const heroTitle = document.querySelector('.hero_title2');
+  // if (heroTitle) {
+  //   const hasChildElements = heroTitle.children.length > 0;
+  //   if (hasChildElements) {
+  //     Array.from(heroTitle.children).map((child) => child.classList.add('hero_title2'));
+  //   }
+  // }
+  const splitText = new SplitType('.hero_title2', {
+    types: 'lines,words,chars',
+    tagName: 'span',
+  });
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
   gsap.set(splitText.lines, {
     overflow: 'hidden',
   });
+
   gsap.set(splitText.chars, {
     yPercent: 100,
+  });
+
+  splitText.words?.forEach((word) => {
+    (word as HTMLElement).style.display = 'inline-block';
+    (word as HTMLElement).style.whiteSpace = 'normal';
+  });
+
+  splitText.lines?.forEach((line) => {
+    (line as HTMLElement).style.display = 'inline-block';
+    (line as HTMLElement).style.whiteSpace = 'nowrap';
   });
   gsap.set(heroFigure1, {
     overflow: 'hidden',

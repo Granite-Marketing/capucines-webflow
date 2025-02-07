@@ -1,5 +1,6 @@
 import { accordion } from '$utils/accordion';
 import { bgAccordion } from '$utils/bgAccordion';
+import { buttonAnimation } from '$utils/buttonAnimation';
 import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { homeMain } from '$utils/homeMain';
@@ -7,14 +8,17 @@ import { linesAnimation } from '$utils/linesAnimation';
 import { roomIndiv } from '$utils/roomIndiv';
 import { slidersSections } from '$utils/slidersSections';
 import { stickyHero } from '$utils/stickyHero';
+import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+import { header } from '$utils/header';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
   gsapSmoothScroll();
   accordion();
   swiperSliders();
+  header();
   // wait page load
   setTimeout(() => {
     homeMain();
@@ -25,5 +29,7 @@ window.Webflow.push(() => {
     roomIndiv();
     slidersSections();
     bgAccordion();
+    stickySection();
+    buttonAnimation();
   }, 100);
 });
