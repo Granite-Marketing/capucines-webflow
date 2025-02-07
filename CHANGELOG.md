@@ -1,5 +1,13 @@
 # @granite-marketing/editoria
 
+## 1.0.6
+
+### Patch Changes
+
+- 7b537ce: map and sticky section updates
+- 90f6170: update menu link animation
+- d77bf97: fix map bug
+
 ## 1.0.5
 
 ### Patch Changes
