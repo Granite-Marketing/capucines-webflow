@@ -15,7 +15,7 @@ export const header = () => {
         let { isMobile, isDesktop } = context.conditions;
 
         if (isDesktop) {
-          tl.from(['.nav_link'], {
+          tl.from(['.nav_link', '.nav_list-sub-link', '.circa_nav-link'], {
             y: 8,
             opacity: 0,
             duration: 1,
@@ -25,7 +25,7 @@ export const header = () => {
           tl.from(
             '.nav_menu-bg',
             {
-              scale: 1.25,
+              scale: 1.2,
               duration: 3,
               ease: 'expo.out',
             },
@@ -34,7 +34,7 @@ export const header = () => {
         }
 
         if (isMobile) {
-          tl.from(['.nav_link'], {
+          tl.from(['.nav_link', '.nav_list-sub-link', '.circa_nav-link'], {
             y: 8,
             opacity: 0,
             delay: 0.45,
