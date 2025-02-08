@@ -1,9 +1,10 @@
 import { gsap } from 'gsap';
 import SplitType from 'split-type';
+// import Splitting from 'splitting';
 // This an attempt to split the text but it doesn't work
 // import { nestedLineSplit } from './gsapNestedLineSplit';
 
-gsap.registerPlugin(SplitType);
+// gsap.registerPlugin(SplitType);
 
 export const homeMain = () => {
   if (!document.querySelector('.section_hero')) return;
@@ -16,10 +17,41 @@ export const homeMain = () => {
   //     Array.from(heroTitle.children).map((child) => child.classList.add('hero_title2'));
   //   }
   // }
+
+  // const split = Splitting({
+  //   target: '.hero_title2',
+  //   by: 'lines',
+  // });
   const splitText = new SplitType('.hero_title2', {
     types: 'lines,words,chars',
-    tagName: 'span',
   });
+
+  // Get the target element
+  // const heroTitle = document.querySelector('.hero_title2');
+  // console.log(split);
+  // if (heroTitle && split[0]?.lines) {
+  //   // Clear the original content
+  //   heroTitle.textContent = '';
+
+  //   // Create spans for each line and append them
+  //   split[0].lines.forEach((lineElements: HTMLElement[]) => {
+  //     const span = document.createElement('span');
+  //     span.classList.add('line');
+  //     gsap.set(span, {
+  //       display: 'inline-block',
+  //     });
+  //     span.innerHTML = lineElements
+  //       .map((el) => {
+  //         const wordSpan = document.createElement('span');
+  //         wordSpan.classList.add('word');
+  //         wordSpan.textContent = el.textContent;
+  //         return wordSpan.outerHTML;
+  //       })
+  //       .join(' ');
+  //     heroTitle.appendChild(span);
+  //   });
+  // }
+
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
   gsap.set(splitText.lines, {

@@ -1,3 +1,6 @@
+import 'splitting/dist/splitting.css';
+import 'splitting/dist/splitting-cells.css';
+
 import { accordion } from '$utils/accordion';
 import { bgAccordion } from '$utils/bgAccordion';
 import { buttonAnimation } from '$utils/buttonAnimation';
@@ -13,6 +16,7 @@ import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {

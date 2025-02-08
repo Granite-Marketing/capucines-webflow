@@ -38,9 +38,12 @@ export const buttonAnimation = () => {
     const originalSplit = new SplitText(originalSpan, { type: 'chars' });
     const cloneSplit = new SplitText(cloneSpan, { type: 'chars' });
 
-    gsap.set([originalSplit.chars, cloneSplit.chars], { position: 'relative' });
+    gsap.set(originalSplit.words, { position: 'relative' });
+    gsap.set(cloneSplit.words, {
+      position: 'relative',
+    });
     gsap.set(cloneSplit.chars, {
-      yPercent: 150,
+      yPercent: 200,
     });
 
     const tl = gsap.timeline({ paused: true });
@@ -54,8 +57,7 @@ export const buttonAnimation = () => {
     }).to(
       cloneSplit.chars,
       {
-        yPercent: -100,
-        y: '24px',
+        yPercent: 0,
         duration: 0.4,
         stagger: 0.02,
         ease: 'power2.inOut',
