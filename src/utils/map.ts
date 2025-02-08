@@ -1,23 +1,62 @@
 // Initialize and add the map
 let map;
-
 const markers = [];
-
-var varInfoWindow;
-var varMap;
 var infoWindow;
+const colors = { bg: '#FFFDF7', line: '#272516' };
+const pinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out">
+<circle cx="18" cy="18" r="18" fill="#FFFDF7" style="transition: fill 300ms ease-in-out"/>
+<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+</svg>
+`;
 
-const createMapVars = async () => {
-  const { InfoWindow } = await google.maps.importLibrary('maps');
-  infoWindow = new InfoWindow();
-};
+const activePinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out; transform: scale(1.5)">
+<circle cx="18" cy="18" r="18" fill="#272516" style="transition: fill 300ms ease-in-out"/>
+<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="#FFFDF7" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="#FFFDF7" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+</svg>
+`;
 
 export const initMap = async () => {
-  createMapVars();
   const mapEl = document.querySelector('.the-map');
   if (!mapEl) return;
+  const positions = getPositions();
+
+  if (positions.length === 0) {
+    getDefaultPosition(mapEl, positions);
+  }
+
+  // SET POSITIONS FOR MAP (EVERYTHING BE VISIBLE)
+
+  const lats = positions.map((p) => p.position.lat);
+  const lngs = positions.map((p) => p.position.lng);
+
+  const centerPosition = {
+    lat: (Math.max(...lats) + Math.min(...lats)) / 2,
+    lng: (Math.max(...lngs) + Math.min(...lngs)) / 2,
+  };
+
+  const { Map } = await google.maps.importLibrary('maps');
+  map = new Map(mapEl, {
+    zoom: 17,
+    center: centerPosition,
+    mapId: 'DEMO_MAP_ID',
+  });
+
+  await setInfoWindow();
+
+  positions.forEach((p) => {
+    createMarker(p, positions.length == 1, infoWindow);
+  });
+
+  mapInteractions(positions, infoWindow);
+};
+
+const getPositions = () => {
   const mapCoordWraps = document.querySelectorAll('.the-map-coord-wrap');
   const positions = [];
+
+  // GET POSITIONS FROM CMS COLLECTION
   mapCoordWraps.forEach((w) => {
     const name = w.getAttribute('title') ?? 'No name';
     let lat = w.getAttribute('lat');
@@ -36,239 +75,38 @@ export const initMap = async () => {
       },
     });
   });
-  console.log(positions);
-  const { Map } = await google.maps.importLibrary('maps');
 
-  if (positions.length === 0) {
-    let lat = mapEl.getAttribute('default-lat');
-    let lng = mapEl.getAttribute('default-lng');
-    if (!lat || !lng) return;
-    lat = Number(lat);
-    lng = Number(lng);
-    if (isNaN(lat) || isNaN(lng)) return;
-    const name = mapEl.getAttribute('default-title') ?? 'No name';
-    positions.push({
-      name: name,
-      position: {
-        lat: lat,
-        lng: lng,
-      },
-    });
-  }
+  return positions;
+};
 
-  const lats = positions.map((p) => p.position.lat);
-  const lngs = positions.map((p) => p.position.lng);
-
-  const position = {
-    lat: (Math.max(...lats) + Math.min(...lats)) / 2,
-    lng: (Math.max(...lngs) + Math.min(...lngs)) / 2,
-  };
-
-  const s = [
-    {
-      featureType: 'all',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          weight: '2.00',
-        },
-      ],
+const getDefaultPosition = (mapEl, positions) => {
+  let lat = mapEl.getAttribute('default-lat');
+  let lng = mapEl.getAttribute('default-lng');
+  if (!lat || !lng) return;
+  lat = Number(lat);
+  lng = Number(lng);
+  if (isNaN(lat) || isNaN(lng)) return;
+  const name = mapEl.getAttribute('default-title') ?? 'No name';
+  positions.push({
+    name: name,
+    position: {
+      lat: lat,
+      lng: lng,
     },
-    {
-      featureType: 'all',
-      elementType: 'geometry.stroke',
-      stylers: [
-        {
-          color: '#9c9c9c',
-        },
-      ],
-    },
-    {
-      featureType: 'all',
-      elementType: 'labels.text',
-      stylers: [
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-    {
-      featureType: 'landscape',
-      elementType: 'all',
-      stylers: [
-        {
-          color: '#f2f2f2',
-        },
-      ],
-    },
-    {
-      featureType: 'landscape',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          color: '#ffffff',
-        },
-      ],
-    },
-    {
-      featureType: 'landscape.man_made',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          color: '#ffffff',
-        },
-      ],
-    },
-    {
-      featureType: 'poi',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'road',
-      elementType: 'all',
-      stylers: [
-        {
-          saturation: -100,
-        },
-        {
-          lightness: 45,
-        },
-      ],
-    },
-    {
-      featureType: 'road',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          color: '#eeeeee',
-        },
-      ],
-    },
-    {
-      featureType: 'road',
-      elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#7b7b7b',
-        },
-      ],
-    },
-    {
-      featureType: 'road',
-      elementType: 'labels.text.stroke',
-      stylers: [
-        {
-          color: '#ffffff',
-        },
-      ],
-    },
-    {
-      featureType: 'road.highway',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'simplified',
-        },
-      ],
-    },
-    {
-      featureType: 'road.arterial',
-      elementType: 'labels.icon',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'transit',
-      elementType: 'all',
-      stylers: [
-        {
-          visibility: 'off',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'all',
-      stylers: [
-        {
-          color: '#46bcec',
-        },
-        {
-          visibility: 'on',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'geometry.fill',
-      stylers: [
-        {
-          color: '#c8d7d4',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'labels.text.fill',
-      stylers: [
-        {
-          color: '#070707',
-        },
-      ],
-    },
-    {
-      featureType: 'water',
-      elementType: 'labels.text.stroke',
-      stylers: [
-        {
-          color: '#ffffff',
-        },
-      ],
-    },
-  ];
-
-  map = new Map(mapEl, {
-    zoom: 17,
-    center: position,
-    mapId: 'DEMO_MAP_ID',
   });
+};
 
-  positions.forEach((p) => {
-    createMarker(p, false, infoWindow);
-  });
-
-  mapInteractions(positions, infoWindow);
+const setInfoWindow = async () => {
+  const { InfoWindow } = await google.maps.importLibrary('maps');
+  infoWindow = new InfoWindow();
 };
 
 const createMarker = async (p, active, infoWindow) => {
   const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
 
   const parser = new DOMParser();
-
-  let pinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="18" cy="18" r="18" fill="#FFFDF7"/>
-  <path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  `;
-  if (active) {
-    pinSvgString = `<svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="36" cy="36" r="36" fill="#272516"/>
-  <path d="M52 33.5C52 46.3333 35.5 57.3333 35.5 57.3333C35.5 57.3333 19 46.3333 19 33.5C19 29.1239 20.7384 24.9271 23.8327 21.8327C26.9271 18.7384 31.1239 17 35.5 17C39.8761 17 44.0729 18.7384 47.1673 21.8327C50.2616 24.9271 52 29.1239 52 33.5Z" stroke="#F0EEE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M35.5 39C38.5376 39 41 36.5376 41 33.5C41 30.4624 38.5376 28 35.5 28C32.4624 28 30 30.4624 30 33.5C30 36.5376 32.4624 39 35.5 39Z" stroke="#F0EEE4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  `;
-  }
-
-  const pinSvg = parser.parseFromString(pinSvgString, 'image/svg+xml').documentElement;
+  let svgHtml = active ? activePinSvgString : pinSvgString;
+  const pinSvg = parser.parseFromString(svgHtml, 'image/svg+xml').documentElement;
 
   const marker = new AdvancedMarkerElement({
     map: map,
@@ -279,7 +117,7 @@ const createMarker = async (p, active, infoWindow) => {
   });
 
   markers.push({ marker: marker, slug: p.slug });
-  // Add a click listener for each marker, and set up the info window.
+
   marker.addListener('click', ({ domEvent, latLng }) => {
     const { target } = domEvent;
 
@@ -289,28 +127,51 @@ const createMarker = async (p, active, infoWindow) => {
   });
 };
 
-const destroyMarker = (slug) => {
-  const removeSlugs = markers.filter((m) => m.slug === slug);
-  removeSlugs.forEach((m) => {
-    for (let key in m) {
-      delete m[key];
-    }
-  });
-  console.log(markers);
-};
-
 const mapInteractions = (positions, infoWindow) => {
-  const accordion = document.querySelector('.section_bg-accordion.is-map-accordion');
-  console.log(accordion);
+  const section = document.querySelector('.section_bg-accordion.is-map-accordion');
+  if (!section) return;
+  const accordion = section.querySelector('.bg-accordion_content');
   if (!accordion) return;
-  accordion.addEventListener('click', (e) => {
-    const slugEl = document.querySelector('.the-map-slug');
-    if (!slugEl) return;
-    const slug = slugEl.textContent;
-    if (!slug) return;
-    // destroyMarker(slug);
-    positions.forEach((p) => {
-      createMarker(p, p.slug === slug, infoWindow);
-    });
-  });
+
+  const config = {
+    attributes: true,
+    subtree: true,
+    attributeFilter: ['class'],
+  };
+  const callback = function (mutationsList, observer) {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        const target = mutation.target;
+        if (!target.classList.contains('bg-accordion_item-radio-field')) return;
+
+        let active = accordion.querySelector('.bg-accordion_item-radio-field.fs-cmsfilter_active');
+        let slug = active ? active.getAttribute('slug') : '';
+
+        markers.forEach((m) => {
+          const styles =
+            m.slug === slug
+              ? {
+                  transform: 'scale(1.5)',
+                  stroke: colors.bg,
+                  fill: colors.line,
+                }
+              : {
+                  transform: 'scale(1)',
+                  stroke: colors.line,
+                  fill: colors.bg,
+                };
+          m.marker.targetElement.querySelector('svg').style.transform = styles.transform;
+          m.marker.targetElement
+            .querySelectorAll('svg path')
+            .forEach((p) => (p.style.stroke = styles.stroke));
+          m.marker.targetElement
+            .querySelectorAll('svg circle')
+            .forEach((c) => (c.style.fill = styles.fill));
+        });
+      }
+    }
+  };
+
+  const observer = new MutationObserver(callback);
+  observer.observe(accordion, config);
 };
