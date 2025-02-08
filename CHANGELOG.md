@@ -1,5 +1,12 @@
 # @granite-marketing/editoria
 
+## 1.0.7
+
+### Patch Changes
+
+- 88fbe89: close modal on overlay click
+- e769c66: map and nav ease updates
+
 ## 1.0.6
 
 ### Patch Changes
