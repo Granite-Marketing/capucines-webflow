@@ -25,7 +25,7 @@ export const header = () => {
           tl.from(
             '.nav_menu-bg',
             {
-              scale: 1.2,
+              scale: 1.1,
               duration: 3,
               ease: 'expo.out',
             },
