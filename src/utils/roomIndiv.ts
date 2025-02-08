@@ -2,6 +2,7 @@ export const roomIndiv = () => {
   const button = document.querySelector("[func='show-room-details");
   const section = document.querySelector('.section_room-detail');
   const close = section?.querySelector('.overlay-close-button');
+  const overlay = document.querySelector('.overlay.room-detail_overlay');
 
   button?.addEventListener('click', () => {
     if (!section) return;
@@ -12,6 +13,13 @@ export const roomIndiv = () => {
   });
 
   close?.addEventListener('click', () => {
+    closeModal();
+  });
+  overlay?.addEventListener('click', () => {
+    closeModal();
+  });
+
+  function closeModal() {
     if (!section) return;
     section.classList.remove('.is-shown');
     section.style.pointerEvents = 'none';
@@ -22,5 +30,5 @@ export const roomIndiv = () => {
       if (!section) return;
       section.style.display = 'none';
     }, 800);
-  });
+  }
 };
