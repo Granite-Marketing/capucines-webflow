@@ -3,16 +3,16 @@ import { bgAccordion } from '$utils/bgAccordion';
 import { buttonAnimation } from '$utils/buttonAnimation';
 import { experiences } from '$utils/experiences';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
+import { header } from '$utils/header';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
+import { initMap } from '$utils/map';
 import { roomIndiv } from '$utils/roomIndiv';
 import { slidersSections } from '$utils/slidersSections';
 import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
-import { header } from '$utils/header';
-import { initMap } from '$utils/map';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {

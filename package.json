@@ -55,6 +55,8 @@
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",
+    "embla-carousel": "^8.5.2",
+    "embla-carousel-auto-scroll": "^8.5.2",
     "gsap": "npm:@gsap/shockingly@^3.12.7",
     "lenis": "^1.0.45",
     "split-type": "^0.3.4",
