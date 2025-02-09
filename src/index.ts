@@ -1,5 +1,5 @@
-import 'splitting/dist/splitting.css';
-import 'splitting/dist/splitting-cells.css';
+// import 'splitting/dist/splitting.css';
+// import 'splitting/dist/splitting-cells.css';
 
 import { accordion } from '$utils/accordion';
 import { bgAccordion } from '$utils/bgAccordion';
