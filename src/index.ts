@@ -10,10 +10,12 @@ import { header } from '$utils/header';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
 import { initMap } from '$utils/map';
+// import { popup } from '$utils/popup';
 import { roomIndiv } from '$utils/roomIndiv';
 import { slidersSections } from '$utils/slidersSections';
 import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
+import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
 
@@ -36,6 +38,8 @@ window.Webflow.push(() => {
     bgAccordion();
     stickySection();
     buttonAnimation();
+    // popup();
+    stickyText();
     setTimeout(() => initMap(), 1000);
   }, 100);
 });
