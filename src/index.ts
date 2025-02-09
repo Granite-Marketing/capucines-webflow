@@ -16,10 +16,12 @@ import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+import { mapNeeds } from '$utils/mapNeeds';
 
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
+  mapNeeds();
   gsapSmoothScroll();
   accordion();
   swiperSliders();
