@@ -1,5 +1,5 @@
-import 'splitting/dist/splitting.css';
-import 'splitting/dist/splitting-cells.css';
+// import 'splitting/dist/splitting.css';
+// import 'splitting/dist/splitting-cells.css';
 
 import { accordion } from '$utils/accordion';
 import { bgAccordion } from '$utils/bgAccordion';
@@ -18,10 +18,12 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+import { mapNeeds } from '$utils/mapNeeds';
 
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
+  mapNeeds();
   gsapSmoothScroll();
   accordion();
   swiperSliders();

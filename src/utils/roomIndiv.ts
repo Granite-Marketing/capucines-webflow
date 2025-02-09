@@ -1,15 +1,18 @@
 export const roomIndiv = () => {
   const button = document.querySelector("[func='show-room-details");
   const section = document.querySelector('.section_room-detail');
+  if (!section) return;
   const close = section?.querySelector('.overlay-close-button');
-  const overlay = document.querySelector('.overlay.room-detail_overlay');
+  const overlay = section?.querySelector('.overlay.room-detail_overlay');
+  const article = section?.querySelector('.room-detail_component');
+  if (!close || !overlay || !article) return;
 
   button?.addEventListener('click', () => {
-    if (!section) return;
-    section.style.display = 'block';
-    void section.offsetWidth;
-    section.style.pointerEvents = 'auto';
-    section.style.opacity = 1;
+    article.style.transform = 'translate(0%)';
+    // overlay.style.display = 'block';
+    // void overlay.offsetWidth;
+    overlay.style.pointerEvents = 'auto';
+    overlay.style.opacity = 1;
   });
 
   close?.addEventListener('click', () => {
@@ -20,15 +23,14 @@ export const roomIndiv = () => {
   });
 
   function closeModal() {
-    if (!section) return;
-    section.classList.remove('.is-shown');
-    section.style.pointerEvents = 'none';
-    section.style.opacity = 0;
+    article.style.transform = 'translateX(100%)';
+    overlay.style.pointerEvents = 'none';
+    overlay.style.opacity = 0;
 
-    setTimeout(() => {
-      const section = document.querySelector('.section_room-detail');
-      if (!section) return;
-      section.style.display = 'none';
-    }, 800);
+    // setTimeout(() => {
+    //   const section = document.querySelector('.section_room-detail');
+    //   if (!section) return;
+    //   section.style.display = 'none';
+    // }, 800);
   }
 };
