@@ -12,11 +12,12 @@ import { stickySection } from '$utils/stickySection';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
 import { header } from '$utils/header';
+import { mapNeeds } from '$utils/mapNeeds';
 import { initMap } from '$utils/map';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
-  // mapNeeds();
+  mapNeeds();
   gsapSmoothScroll();
   accordion();
   swiperSliders();
