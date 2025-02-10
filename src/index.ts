@@ -10,6 +10,7 @@ import { header } from '$utils/header';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
 import { initMap } from '$utils/map';
+import { mapNeeds } from '$utils/mapNeeds';
 // import { popup } from '$utils/popup';
 import { roomIndiv } from '$utils/roomIndiv';
 import { slidersSections } from '$utils/slidersSections';
@@ -18,7 +19,6 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
-import { mapNeeds } from '$utils/mapNeeds';
 
 window.Webflow = window.Webflow || [];
 
