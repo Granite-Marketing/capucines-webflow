@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.8
+
+### Patch Changes
+
+- de1878a: siteweide updates
+
 ## 1.0.7
 
 ### Patch Changes
