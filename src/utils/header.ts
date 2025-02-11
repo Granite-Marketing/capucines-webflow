@@ -15,21 +15,31 @@ export const header = () => {
         let { isMobile, isDesktop } = context.conditions;
 
         if (isDesktop) {
-          tl.from(['.nav_link', '.nav_list-sub-link', '.circa_nav-link'], {
-            y: 8,
+          tl.from('.nav_menu', {
             opacity: 0,
-            duration: 1,
-            delay: 0.45,
-            stagger: 0.05,
-          });
+            // duration: 1,
+            ease: 'expo.out',
+          }),
+            tl.from(
+              '.nav_menu-bg',
+              {
+                scale: 1.1,
+                duration: 2,
+                opacity: 0,
+                ease: 'expo.out',
+              },
+              '<+=0.25'
+            );
           tl.from(
-            '.nav_menu-bg',
+            ['.nav_link', '.nav_list-sub-link', '.circa_nav-link'],
             {
-              scale: 1.1,
-              duration: 3,
-              ease: 'expo.out',
+              y: 8,
+              opacity: 0,
+              duration: 1,
+              // delay: 0.45,
+              stagger: 0.05,
             },
-            '<+=0.75'
+            '<+=1'
           );
         }
 
