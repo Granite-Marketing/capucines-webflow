@@ -1,5 +1,13 @@
 # @granite-marketing/editoria
 
+## 1.0.9
+
+### Patch Changes
+
+- ed47789: menu animation timing updates
+- ed47789: finalise nav animation ready for review
+- ed47789: update nav animation
+
 ## 1.0.8
 
 ### Patch Changes
