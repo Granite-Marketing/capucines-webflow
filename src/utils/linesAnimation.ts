@@ -37,7 +37,7 @@ const lineSetup = (
       trigger: line,
       start: '0% 65%',
       end: '100% 65%',
-      markers: true,
+      markers: false,
       scrub,
       animation: gsap.to(innerLine, { duration: duration || 1, scaleX: 1 }),
     });
@@ -47,7 +47,6 @@ const lineSetup = (
 gsap.registerPlugin(ScrollTrigger);
 function animate() {
   const lines = document.querySelectorAll<HTMLElement>('.vertical-line');
-  // get the lines that have the class 'alternate'
   const scrubLines = Array.from(lines).filter((line) => line.classList.contains('scrub'));
   const enterLines = Array.from(lines).filter((line) => line.classList.contains('enter'));
 
