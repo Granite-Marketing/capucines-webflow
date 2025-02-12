@@ -37,7 +37,7 @@ const lineSetup = (
       trigger: line,
       start: '0% 65%',
       end: '100% 65%',
-      markers: false,
+      markers: true,
       scrub,
       animation: gsap.to(innerLine, { duration: duration || 1, scaleX: 1 }),
     });
@@ -45,8 +45,8 @@ const lineSetup = (
 };
 
 gsap.registerPlugin(ScrollTrigger);
-function animate(className: string) {
-  const lines = document.querySelectorAll<HTMLElement>(className);
+function animate() {
+  const lines = document.querySelectorAll<HTMLElement>('.vertical-line');
   // get the lines that have the class 'alternate'
   const scrubLines = Array.from(lines).filter((line) => line.classList.contains('scrub'));
   const enterLines = Array.from(lines).filter((line) => line.classList.contains('enter'));
@@ -60,17 +60,19 @@ function animate(className: string) {
       lineSetup(line, false, duration ? parseInt(duration) : undefined);
     });
   }
-  if (scrubLines.length === 0 && enterLines.length === 0) {
-    lines.forEach((line) => {
-      const duration = line.getAttribute('data-duration');
-      lineSetup(line, false, duration ? parseInt(duration) : undefined, 'horizontal');
-    });
-  }
+}
+
+function animateHorizontal() {
+  const horizontalLines = document.querySelectorAll<HTMLElement>('.horizontal-line');
+  horizontalLines.forEach((line) => {
+    const duration = line.getAttribute('data-duration');
+    lineSetup(line, false, duration ? parseInt(duration) : undefined, 'horizontal');
+  });
 }
 
 const linesAnimation = () => {
-  animate('.vertical-line');
-  animate('.horizontal-line');
+  animate();
+  animateHorizontal();
 };
 
 export { linesAnimation };
