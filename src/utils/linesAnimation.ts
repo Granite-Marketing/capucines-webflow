@@ -9,15 +9,14 @@ const lineSetup = (
 ) => {
   const innerLine = document.createElement('div');
   innerLine.classList.add('section-line-inner');
+  // get the background color of the line
+  const { backgroundColor } = getComputedStyle(line);
   innerLine.style.cssText = `
       width: 100%;
       height: 100%;
-      background: var(--border-color--border-primary);
+      background: ${backgroundColor};
     `;
   line.style.backgroundColor = 'transparent';
-  if (line.classList.contains('alternate')) {
-    innerLine.style.backgroundColor = 'var(--border-color--border-alternate)';
-  }
   line.appendChild(innerLine);
   if (direction === 'vertical') {
     gsap.set(innerLine, { transformOrigin: 'top', scaleY: 0 });

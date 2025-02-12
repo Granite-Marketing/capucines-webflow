@@ -6,7 +6,19 @@ gsap.registerPlugin(ScrollTrigger);
 export const stickySection = () => {
   const stickySections = document.querySelector('.section_sticky-hero .section-sizer');
   const stickyImages = document.querySelectorAll('.sticky-hero_item-figure');
-  const checkPoints = document.querySelectorAll(
+  const checkPoint = document.querySelector(
+    '.sticky-hero_pagination .sticky-hero_pagination-bullet'
+  );
+  const cloneLength = stickyImages.length - 1;
+  // duplicate the checkPoints to be as much as the stickyImages
+  for (let i = 0; i < cloneLength; i++) {
+    const clone = checkPoint?.cloneNode(true);
+    if (clone) {
+      checkPoint?.parentNode?.appendChild(clone);
+    }
+  }
+
+  const newCheckPoints = document.querySelectorAll(
     '.sticky-hero_pagination .sticky-hero_pagination-bullet'
   );
 
@@ -17,8 +29,8 @@ export const stickySection = () => {
 
     gsap.set(imagesArray, { opacity: 0 });
     gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
-    gsap.set(checkPoints, { backgroundColor: 'transparent' });
-    gsap.set(checkPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
+    gsap.set(newCheckPoints, { backgroundColor: 'transparent' });
+    gsap.set(newCheckPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -50,7 +62,7 @@ export const stickySection = () => {
         );
 
         tl.to(
-          checkPoints[index],
+          newCheckPoints[index],
           {
             backgroundColor: 'transparent',
             duration: stepDuration,
@@ -58,7 +70,7 @@ export const stickySection = () => {
           '<'
         );
         tl.to(
-          checkPoints[index + 1],
+          newCheckPoints[index + 1],
           {
             backgroundColor: '#FFFFFF',
             duration: stepDuration,
