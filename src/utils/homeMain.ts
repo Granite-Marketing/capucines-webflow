@@ -9,48 +9,9 @@ import SplitType from 'split-type';
 export const homeMain = () => {
   if (!document.querySelector('.section_hero')) return;
 
-  // This an attempt to split the text but it doesn't work
-  // const heroTitle = document.querySelector('.hero_title2');
-  // if (heroTitle) {
-  //   const hasChildElements = heroTitle.children.length > 0;
-  //   if (hasChildElements) {
-  //     Array.from(heroTitle.children).map((child) => child.classList.add('hero_title2'));
-  //   }
-  // }
-
-  // const split = Splitting({
-  //   target: '.hero_title2',
-  //   by: 'lines',
-  // });
   const splitText = new SplitType('.hero_title2', {
     types: 'lines,words,chars',
   });
-
-  // Get the target element
-  // const heroTitle = document.querySelector('.hero_title2');
-  // console.log(split);
-  // if (heroTitle && split[0]?.lines) {
-  //   // Clear the original content
-  //   heroTitle.textContent = '';
-
-  //   // Create spans for each line and append them
-  //   split[0].lines.forEach((lineElements: HTMLElement[]) => {
-  //     const span = document.createElement('span');
-  //     span.classList.add('line');
-  //     gsap.set(span, {
-  //       display: 'inline-block',
-  //     });
-  //     span.innerHTML = lineElements
-  //       .map((el) => {
-  //         const wordSpan = document.createElement('span');
-  //         wordSpan.classList.add('word');
-  //         wordSpan.textContent = el.textContent;
-  //         return wordSpan.outerHTML;
-  //       })
-  //       .join(' ');
-  //     heroTitle.appendChild(span);
-  //   });
-  // }
 
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
@@ -60,6 +21,7 @@ export const homeMain = () => {
 
   gsap.set(splitText.chars, {
     yPercent: 100,
+    opacity: 0,
   });
 
   splitText.words?.forEach((word) => {
@@ -97,7 +59,7 @@ export const homeMain = () => {
       {
         clipPath: 'inset(0% 0% 0% 0%)',
       },
-      '-=1'
+      '-=.5'
     )
     .to(
       splitText.chars,
@@ -105,7 +67,8 @@ export const homeMain = () => {
         duration: 1,
         yPercent: 0,
         stagger: 0.025,
+        opacity: 1,
       },
-      '-=.75'
+      '-=.5'
     );
 };
