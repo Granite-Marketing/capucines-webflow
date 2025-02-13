@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
 export const stickySection = () => {
-  const stickySections = document.querySelector('.section_sticky-hero .section-sizer');
+  const stickySections = document.querySelector('.section_sticky-hero');
   const stickyImages = document.querySelectorAll('.sticky-hero_item-figure');
   const checkPoint = document.querySelector(
     '.sticky-hero_pagination .sticky-hero_pagination-bullet'
