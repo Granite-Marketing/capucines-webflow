@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.10
+
+### Patch Changes
+
+- 4768507: client feedback
+
 ## 1.0.9
 
 ### Patch Changes
