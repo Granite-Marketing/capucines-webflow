@@ -10,15 +10,15 @@ export const homeMain = () => {
   if (!document.querySelector('.section_hero')) return;
 
   const splitText = new SplitType('.hero_title2', {
-    types: 'lines,words,chars',
+    types: 'words,chars',
   });
 
   const heroFigure1 = document.querySelector('.hero_figure-1');
   const heroFigure2 = document.querySelector('.hero_figure-2');
-  gsap.set(splitText.lines, {
-    overflow: 'hidden',
+  const ems = document.querySelectorAll('.hero_title2 em');
+  gsap.set(ems, {
+    display: 'unset',
   });
-
   gsap.set(splitText.chars, {
     yPercent: 100,
     opacity: 0,
