@@ -19,7 +19,7 @@ export const textMask = () => {
       display: 'unset',
     });
     gsap.set(splitText.words, {
-      yPercent: 100,
+      yPercent: 80,
       opacity: 0,
       autoAlpha: 0,
     });
@@ -35,7 +35,7 @@ export const textMask = () => {
     ScrollTrigger.create({
       trigger: textEl,
       markers: false,
-      start: 'top 50%',
+      start: 'top 65%',
       animation: tl,
       toggleActions: 'play reverse play reverse',
     });
