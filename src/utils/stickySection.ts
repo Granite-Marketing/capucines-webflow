@@ -11,10 +11,14 @@ export const stickySection = () => {
   );
   const cloneLength = stickyImages.length - 1;
   // duplicate the checkPoints to be as much as the stickyImages
-  for (let i = 0; i < cloneLength; i++) {
-    const clone = checkPoint?.cloneNode(true);
-    if (clone) {
-      checkPoint?.parentNode?.appendChild(clone);
+  if (cloneLength === 1) {
+    checkPoint?.parentNode?.removeChild(checkPoint);
+  } else {
+    for (let i = 0; i < cloneLength; i++) {
+      const clone = checkPoint?.cloneNode(true);
+      if (clone) {
+        checkPoint?.parentNode?.appendChild(clone);
+      }
     }
   }
 

@@ -8,11 +8,15 @@ export const stickyText = () => {
 
   if (!stickyText) return;
 
-  ScrollTrigger.create({
-    trigger: stickyText.parentElement,
-    start: 'top 20%',
-    end: '80% 20%',
-    pin: stickyText,
-    markers: false,
+  const mm = gsap.matchMedia();
+
+  mm.add('(min-width: 768px)', () => {
+    ScrollTrigger.create({
+      trigger: stickyText.parentElement,
+      start: 'top 20%',
+      end: '80% 20%',
+      pin: stickyText,
+      markers: false,
+    });
   });
 };

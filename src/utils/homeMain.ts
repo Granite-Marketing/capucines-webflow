@@ -31,7 +31,7 @@ export const homeMain = () => {
 
   splitText.lines?.forEach((line) => {
     (line as HTMLElement).style.display = 'inline-block';
-    (line as HTMLElement).style.whiteSpace = 'nowrap';
+    // (line as HTMLElement).style.whiteSpace = 'nowrap';
   });
   gsap.set(heroFigure1, {
     overflow: 'hidden',
