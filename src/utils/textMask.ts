@@ -12,7 +12,12 @@ export const textMask = () => {
     gsap.set(textEl, {
       display: 'inline-block',
     });
-    const splitText = new SplitType(textEl);
+    const splitText = new SplitType(textEl, { types: 'words' });
+    // find em tag and set it to inline-block
+    const ems = textEl.querySelectorAll('em');
+    gsap.set(ems, {
+      display: 'unset',
+    });
     gsap.set(splitText.words, {
       yPercent: 100,
       opacity: 0,
@@ -29,7 +34,7 @@ export const textMask = () => {
     });
     ScrollTrigger.create({
       trigger: textEl,
-      markers: false,
+      markers: truefalse,
       start: 'top 50%',
       animation: tl,
       toggleActions: 'play reverse play reverse',
