@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.11
+
+### Patch Changes
+
+- bce9313: fix hero cutoff
+
 ## 1.0.10
 
 ### Patch Changes
