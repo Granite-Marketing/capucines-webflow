@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.13
+
+### Patch Changes
+
+- 9858297: add popup modal
+
 ## 1.0.12
 
 ### Patch Changes
