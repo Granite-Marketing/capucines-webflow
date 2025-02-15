@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.12
+
+### Patch Changes
+
+- 9a87dce: add rooms intro animation
+
 ## 1.0.11
 
 ### Patch Changes
