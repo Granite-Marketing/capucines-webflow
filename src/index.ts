@@ -13,6 +13,7 @@ import { initMap } from '$utils/map';
 import { mapNeeds } from '$utils/mapNeeds';
 // import { popup } from '$utils/popup';
 import { roomIndiv } from '$utils/roomIndiv';
+import { roomsHeroAnimation } from '$utils/roomsHeroAnimation';
 import { slidersSections } from '$utils/slidersSections';
 import { stickyHero } from '$utils/stickyHero';
 import { stickySection } from '$utils/stickySection';
@@ -40,6 +41,7 @@ window.Webflow.push(() => {
     bgAccordion();
     stickySection();
     buttonAnimation();
+    roomsHeroAnimation();
     // popup();
     stickyText();
     setTimeout(() => initMap(), 1000);
