@@ -20,6 +20,8 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
+import '$utils/bookingEngine.css';
+import { popupModal } from '$utils/popupModal';
 
 window.Webflow = window.Webflow || [];
 
@@ -42,7 +44,7 @@ window.Webflow.push(() => {
     stickySection();
     buttonAnimation();
     roomsHeroAnimation();
-    // popup();
+    popupModal();
     stickyText();
     setTimeout(() => initMap(), 1000);
   }, 100);
