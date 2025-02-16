@@ -4,8 +4,9 @@ import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
 export const stickySection = () => {
-  const stickySections = document.querySelector('.section_sticky-hero');
+  const stickySection = document.querySelector('.section_sticky-hero');
   const stickyImages = document.querySelectorAll('.sticky-hero_item-figure');
+  const headerHeight = document.querySelector('header.header')?.clientHeight;
   const checkPoint = document.querySelector(
     '.sticky-hero_pagination .sticky-hero_pagination-bullet'
   );
@@ -30,6 +31,8 @@ export const stickySection = () => {
 
   mm.add('(min-width: 768px)', () => {
     const imagesArray = Array.from(stickyImages).reverse();
+    const isSquare = stickySection?.classList.contains('is-square');
+    const innerSection = stickySection?.querySelector('.sticky-hero_component.is-square');
 
     gsap.set(imagesArray, { opacity: 0 });
     gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
@@ -38,9 +41,10 @@ export const stickySection = () => {
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: stickySections,
+        trigger: isSquare ? innerSection : stickySection,
+        start: isSquare ? `top ${headerHeight}px` : 'top top',
         end: '+=400%',
-        pin: true,
+        pin: stickySection,
         markers: false,
         scrub: true,
       },
