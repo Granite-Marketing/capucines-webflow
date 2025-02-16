@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.15
+
+### Patch Changes
+
+- ed8107e: hero alt updates and js-removal optimisations
+
 ## 1.0.14
 
 ### Patch Changes
