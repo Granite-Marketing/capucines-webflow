@@ -43,7 +43,7 @@ export const stickySection = () => {
     ScrollTrigger.create({
       trigger: isSquare ? innerSection : stickySection,
       start: 'top top',
-      end: '+=400%',
+      end: '+=200%',
       pin: stickySection,
       markers: false,
       scrub: true,
