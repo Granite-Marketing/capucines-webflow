@@ -1,5 +1,14 @@
 # @granite-marketing/editoria
 
+## 1.0.14
+
+### Patch Changes
+
+- d91642f: line animation updates
+- 79c781a: text reveal animation timingg updates
+- 75570dc: sticky animation and line timings
+- 2df0168: fix sticky section blogs
+
 ## 1.0.13
 
 ### Patch Changes
