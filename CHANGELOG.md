@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.17
+
+### Patch Changes
+
+- 4a0b9c8: sticky section animation timings
+
 ## 1.0.16
 
 ### Patch Changes
