@@ -6,7 +6,6 @@ gsap.registerPlugin(ScrollTrigger);
 export const stickySection = () => {
   const stickySection = document.querySelector('.section_sticky-hero');
   const stickyImages = document.querySelectorAll('.sticky-hero_item-figure');
-  const headerHeight = document.querySelector('header.header')?.clientHeight;
   const checkPoint = document.querySelector(
     '.sticky-hero_pagination .sticky-hero_pagination-bullet'
   );
@@ -39,53 +38,50 @@ export const stickySection = () => {
     gsap.set(newCheckPoints, { backgroundColor: 'transparent' });
     gsap.set(newCheckPoints[0], { backgroundColor: '#FFFFFF' }); // Make last checkpoint white initially
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: isSquare ? innerSection : stickySection,
-        start: isSquare ? 'top top' : 'top top',
-        end: '+=400%',
-        pin: stickySection,
-        markers: false,
-        scrub: true,
-      },
-    });
+    let currentImageIndex = 0;
 
-    // Calculate duration for each image transition
-    const stepDuration = 1 / (imagesArray.length - 1);
+    ScrollTrigger.create({
+      trigger: isSquare ? innerSection : stickySection,
+      start: 'top top',
+      end: '+=400%',
+      pin: stickySection,
+      markers: false,
+      scrub: true,
+      onUpdate: (self) => {
+        const { progress } = self;
+        const stepSize = 1 / imagesArray.length;
+        const targetIndex = Math.floor(progress / stepSize);
 
-    imagesArray.forEach((img, index) => {
-      if (index < imagesArray.length - 1) {
-        // Skip the first image (last in original order)
-        tl.to(img, {
-          opacity: 0,
-          duration: stepDuration,
-        });
-        tl.to(
-          imagesArray[index + 1],
-          {
+        if (targetIndex !== currentImageIndex && targetIndex < imagesArray.length) {
+          gsap.to(imagesArray[currentImageIndex], {
+            opacity: 0,
+            duration: 0.5,
+            ease: 'power2.inOut',
+          });
+
+          // Fade in next image
+          gsap.to(imagesArray[targetIndex], {
             opacity: 1,
-            duration: stepDuration,
-          },
-          '<'
-        );
+            duration: 0.5,
+            ease: 'power2.inOut',
+          });
 
-        tl.to(
-          newCheckPoints[index],
-          {
+          // Update pagination
+          gsap.to(newCheckPoints[currentImageIndex], {
             backgroundColor: 'transparent',
-            duration: stepDuration,
-          },
-          '<'
-        );
-        tl.to(
-          newCheckPoints[index + 1],
-          {
+            duration: 0.5,
+            ease: 'power2.inOut',
+          });
+
+          gsap.to(newCheckPoints[targetIndex], {
             backgroundColor: '#FFFFFF',
-            duration: stepDuration,
-          },
-          '<'
-        );
-      }
+            duration: 0.5,
+            ease: 'power2.inOut',
+          });
+
+          currentImageIndex = targetIndex;
+        }
+      },
     });
   });
 };
