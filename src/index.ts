@@ -24,6 +24,7 @@ import '$utils/bookingEngine.css';
 import { popupModal } from '$utils/popupModal';
 import { bookingModal } from '$utils/bookingModal';
 import { homeAlternativeHero } from '$utils/homeAlternativeHero';
+import { gaTagging } from '$utils/gaTagging';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
@@ -49,6 +50,7 @@ window.Webflow.push(() => {
     popupModal();
     stickyText();
     homeAlternativeHero();
+    gaTagging();
     setTimeout(() => initMap(), 1000);
     document.querySelectorAll(".js-loading").forEach(item => {
       item.classList.remove('js-loading');
