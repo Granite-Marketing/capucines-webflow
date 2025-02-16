@@ -20,7 +20,6 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
-import '$utils/bookingEngine.css';
 import { popupModal } from '$utils/popupModal';
 import { bookingModal } from '$utils/bookingModal';
 import { homeAlternativeHero } from '$utils/homeAlternativeHero';
