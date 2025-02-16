@@ -1,5 +1,13 @@
 # @granite-marketing/editoria
 
+## 1.0.16
+
+### Patch Changes
+
+- 690f1be: add booking engine css
+- 7896684: fix sticky section anim timing
+- 5718141: ga4 tagging code
+
 ## 1.0.15
 
 ### Patch Changes
