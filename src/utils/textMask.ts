@@ -35,7 +35,7 @@ export const textMask = () => {
     ScrollTrigger.create({
       trigger: textEl,
       markers: false,
-      start: 'top 65%',
+      start: 'top 75%',
       animation: tl,
       toggleActions: 'play reverse play reverse',
     });
