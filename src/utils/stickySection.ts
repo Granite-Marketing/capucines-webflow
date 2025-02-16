@@ -42,7 +42,7 @@ export const stickySection = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: isSquare ? innerSection : stickySection,
-        start: isSquare ? `top ${headerHeight}px` : 'top top',
+        start: isSquare ? 'top top' : 'top top',
         end: '+=400%',
         pin: stickySection,
         markers: false,
