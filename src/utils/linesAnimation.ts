@@ -34,8 +34,8 @@ const lineSetup = (
 
     ScrollTrigger.create({
       trigger: line,
-      start: '0% 65%',
-      end: '100% 65%',
+      start: '0% 85%',
+      end: '100% 85%',
       markers: false,
       scrub,
       animation: gsap.to(innerLine, { duration: duration || 1, scaleX: 1 }),
