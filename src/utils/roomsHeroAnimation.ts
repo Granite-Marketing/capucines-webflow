@@ -10,7 +10,6 @@ export const roomsHeroAnimation = () => {
   gsap.set([heroTitle, heroSubtitle, heroStats, heroButton, heroModalButton], {
     opacity: 0,
   });
-  document.documentElement.classList.remove('js-loading');
   const tl = gsap.timeline();
   tl.fromTo(heroTitle, { opacity: 0 }, { duration: .75, ease: 'power2.inOut', opacity: 1 });
   tl.fromTo(heroSubtitle, { opacity: 0 }, { duration: .75, ease: 'power2.inOut', opacity: 1 }, '<+=0.05');

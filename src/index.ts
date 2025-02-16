@@ -22,7 +22,8 @@ import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
 import '$utils/bookingEngine.css';
 import { popupModal } from '$utils/popupModal';
-
+import { bookingModal } from '$utils/bookingModal';
+import { homeAlternativeHero } from '$utils/homeAlternativeHero';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
@@ -38,6 +39,7 @@ window.Webflow.push(() => {
     textMask();
     stickyHero();
     experiences();
+    bookingModal();
     roomIndiv();
     slidersSections();
     bgAccordion();
@@ -46,6 +48,10 @@ window.Webflow.push(() => {
     roomsHeroAnimation();
     popupModal();
     stickyText();
+    homeAlternativeHero();
     setTimeout(() => initMap(), 1000);
+    document.querySelectorAll(".js-loading").forEach(item => {
+      item.classList.remove('js-loading');
+    });
   }, 100);
 });

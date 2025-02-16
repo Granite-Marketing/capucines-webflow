@@ -2,12 +2,11 @@
     --bg-color: var(--base-color-brand--brand-heading-text);
     --input-bg: transparent;
     --text-color: var(--base-color-brand--brand-bg);
-    --border-color: var(--base-color-brand--brand-accent);
+    --border-color: #fff;
     --accent-color: var(--base-color-brand--brand-accent);
 }
 
 .booking-form {
-    background: var(--bg-color);
     padding: 2rem;
     color: var(--text-color);
     display: flex;
@@ -29,7 +28,6 @@
 
 .form-group label {
     display: block;
-    margin-bottom: 0.5rem;
     font-size: 0.9rem;
     flex: 100%;
     text-align: left;
@@ -67,7 +65,7 @@ input[type="text"]::placeholder {
 }
 
 .book-now {
-    background: var(--accent-color);
+    background: #fff;
     color: #234344;
     padding: 0.75rem 2rem;
     border: none;    
@@ -76,6 +74,7 @@ input[type="text"]::placeholder {
     font-weight: bold;
     transition: background 0.3s;
     border: 1px solid var(--border-color);
+    width: 100%;
 }
 
 .book-now:hover,
@@ -83,15 +82,6 @@ input[type="text"]::placeholder {
     background: transparent;
     border: 1px solid var(--border-color);
     color: var(--border-color);
-}
-
-/* Responsive adjustments */
-@media (min-width: 768px) {
-    .booking-form {
-        flex-direction: row;
-        align-items: flex-end;
-        background-color: transparent;
-    }
 }
 
 select {
@@ -114,3 +104,18 @@ select {
     padding-right: 2.5rem !important;
     position: relative;
 } 
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+    .booking-form {
+        flex-direction: row;
+        align-items: flex-end;
+        background-color: transparent;
+    }
+    .book-now {
+        width: auto;
+    }
+    .form-group label {
+        margin-bottom: 0.5rem;        
+    }
+}
