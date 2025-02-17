@@ -7,18 +7,25 @@ export const gaTagging = () => {
           link.setAttribute(gaTarget, '');
         });  
     }
+
     // Get the data-page attribute value from the page
     const pageGaValue = document.querySelector('[data-page]')?.getAttribute('data-page');
     
     if (!pageGaValue) return;
 
-    // detail pages
+    const pageName = pageGaValue.split('-').pop();
+    const navBookingButton = document.querySelector('[book-nav]');
+
+    // update nav booking data attribute
+    navBookingButton?.setAttribute(`book-room-${pageName}-nav`, '');
+    navBookingButton?.removeAttribute('book-nav');
+
+    // detail pages booking button targets
     const bookNowButtons = document.querySelectorAll('[ga4-inner]');
 
     // Set the attribute on all Book Now buttons
     let i = 1;
-    bookNowButtons.forEach((button) => {
-        const pageName = pageGaValue.split('-').pop();                
+    bookNowButtons.forEach((button) => {                        
         button.setAttribute(`book-room-${pageName}-sec${i}`, '');
         i++;
     });
