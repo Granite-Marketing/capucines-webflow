@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.18
+
+### Patch Changes
+
+- 4e7c6e1: booking nav updates rooms indv
+
 ## 1.0.17
 
 ### Patch Changes
