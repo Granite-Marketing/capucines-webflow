@@ -36,9 +36,13 @@ export const initMap = async () => {
     lng: (Math.max(...lngs) + Math.min(...lngs)) / 2,
   };
 
+  let mapZoom = mapEl.getAttribute('map-zoom');
+  if (!mapZoom) mapZoom = '17';
+  mapZoom = Number(mapZoom);
+
   const { Map } = await google.maps.importLibrary('maps');
   map = new Map(mapEl, {
-    zoom: 17,
+    zoom: mapZoom,
     center: centerPosition,
     mapId: 'DEMO_MAP_ID',
   });
