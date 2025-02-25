@@ -4,6 +4,7 @@ export const gaTagging = () => {
   if (targetLinks) {
     targetLinks.forEach((link) => {
       const gaTarget = link.getAttribute('ga4');
+      if (!gaTarget) return;
       link.setAttribute(gaTarget, '');
     });
   }
