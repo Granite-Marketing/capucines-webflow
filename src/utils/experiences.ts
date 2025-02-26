@@ -51,7 +51,7 @@ const highlightExperience = (item, highlight = true) => {
   const mainHeading = item.querySelector('.experiences_item-header.is-desk');
   if (highlight) {
     figure.style.opacity = 1;
-    label.style.fontStyle = 'italic';
+    label.classList.add('is-active');
 
     content.style.opacity = 1;
     content.style.pointerEvents = 'auto';
@@ -60,7 +60,7 @@ const highlightExperience = (item, highlight = true) => {
     mainHeading.style.pointerEvents = 'auto';
   } else {
     figure.style.opacity = 0;
-    label.style.fontStyle = 'normal';
+    label.classList.remove('is-active');
     content.style = {};
 
     mainHeading.style.opacity = 0;

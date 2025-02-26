@@ -2,20 +2,12 @@
 let map;
 const markers = [];
 var infoWindow;
-const colors = { bg: '#FFFDF7', line: '#272516' };
-const pinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out">
-<circle cx="18" cy="18" r="18" fill="#FFFDF7" style="transition: fill 300ms ease-in-out"/>
-<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
-<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="#272516" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
-</svg>
-`;
-
-const activePinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out; transform: scale(1.5)">
-<circle cx="18" cy="18" r="18" fill="#272516" style="transition: fill 300ms ease-in-out"/>
-<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="#FFFDF7" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
-<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="#FFFDF7" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
-</svg>
-`;
+const colors = {
+  normal: { bg: '#FFFDF7', line: '#272516' },
+  active: { bg: '#272516', line: '#FFFDF7' },
+};
+let pinSvgString = '';
+let activePinSvgString = '';
 
 export const initMap = async () => {
   const mapEl = document.querySelector('.the-map');
@@ -48,6 +40,9 @@ export const initMap = async () => {
   });
 
   await setInfoWindow();
+
+  readPinColors(mapEl);
+  createPinSvgs();
 
   positions.forEach((p) => {
     createMarker(p, positions.length == 1, infoWindow);
@@ -156,13 +151,15 @@ const mapInteractions = (positions, infoWindow) => {
             m.slug === slug
               ? {
                   transform: 'scale(1.5)',
-                  stroke: colors.bg,
-                  fill: colors.line,
+                  stroke: colors.active.line,
+                  fill: colors.active.bg,
+                  zIndex: '101010',
                 }
               : {
                   transform: 'scale(1)',
-                  stroke: colors.line,
-                  fill: colors.bg,
+                  stroke: colors.normal.line,
+                  fill: colors.normal.bg,
+                  zIndex: '1',
                 };
           m.marker.targetElement.querySelector('svg').style.transform = styles.transform;
           m.marker.targetElement
@@ -178,4 +175,32 @@ const mapInteractions = (positions, infoWindow) => {
 
   const observer = new MutationObserver(callback);
   observer.observe(accordion, config);
+};
+
+const readPinColors = (mapEl) => {
+  let c0 = mapEl.getAttribute('color-pin') ?? null;
+  let c1 = mapEl.getAttribute('color-pin-line') ?? null;
+  let c2 = mapEl.getAttribute('color-active-pin') ?? null;
+  let c3 = mapEl.getAttribute('color-active-pin-line') ?? null;
+
+  if (c0) colors.normal.bg = c0;
+  if (c1) colors.normal.line = c1;
+  if (c2) colors.active.bg = c2;
+  if (c3) colors.active.line = c3;
+};
+
+const createPinSvgs = () => {
+  pinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out;">
+<circle cx="18" cy="18" r="18" fill="${colors.normal.bg}" style="transition: fill 300ms ease-in-out"/>
+<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="${colors.normal.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="${colors.normal.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+</svg>
+`;
+
+  activePinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out; transform: scale(1.5);">
+<circle cx="18" cy="18" r="18" fill="${colors.active.bg}" style="transition: fill 300ms ease-in-out"/>
+<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="${colors.active.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="${colors.active.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+</svg>
+`;
 };
