@@ -4,6 +4,7 @@
     --text-color: var(--base-color-brand--brand-bg);
     --border-color: #fff;
     --accent-color: var(--base-color-brand--brand-accent);
+    --title-font-family: sweet-gothic, sans-serif;
 }
 
 .booking-form {
@@ -11,7 +12,7 @@
     color: var(--text-color);
     display: flex;
     gap: 1.5rem;
-    max-width: 1164px;
+    max-width: 1280px;
     margin: 0 auto;
     flex-direction: column;
     flex-wrap: wrap;
@@ -23,7 +24,7 @@
 
 .form-group {
     flex: 1;
-    min-width: 150px;
+    min-width: 170px;
 }
 
 .form-group label {
@@ -43,10 +44,14 @@ input[type="text"] {
     border: none;
     border-bottom: 1px solid var(--border-color);
     color: var(--text-color);
+    font-family: var(--title-font-family) !important;
+    font-weight: 700;
 }
 
 .date-input::placeholder {
     text-transform: uppercase;
+    font-family: var(--title-font-family) !important;
+    font-weight: 700;
 }
 
 input[type="text"]::placeholder {
@@ -62,6 +67,8 @@ input[type="text"]::placeholder {
     width: 2.5rem;
     height: 100%;
     cursor: pointer;
+    font-family: var(--title-font-family) !important;
+    font-weight: 700;
 }
 
 .book-now {
@@ -92,6 +99,7 @@ select {
     background-repeat: no-repeat;
     background-position: right 0.5rem center;
     padding-right: 2.5rem !important;
+    font-family: var(--title-font-family);
 }
 
 .date-input {
