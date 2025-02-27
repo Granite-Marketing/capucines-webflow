@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.19
+
+### Patch Changes
+
+- 7c3e9fb: mico update
+
 ## 1.0.18
 
 ### Patch Changes
