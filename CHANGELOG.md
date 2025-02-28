@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.20
+
+### Patch Changes
+
+- 33f3657: booking engine styling updates
+
 ## 1.0.19
 
 ### Patch Changes
