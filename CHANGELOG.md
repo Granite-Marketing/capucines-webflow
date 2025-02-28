@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.22
+
+### Patch Changes
+
+- 7b7a7d9: responsive fixes for booking engine
+
 ## 1.0.21
 
 ### Patch Changes
