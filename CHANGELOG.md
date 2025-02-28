@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.21
+
+### Patch Changes
+
+- 2153962: booking engine capucine updates
+
 ## 1.0.20
 
 ### Patch Changes
