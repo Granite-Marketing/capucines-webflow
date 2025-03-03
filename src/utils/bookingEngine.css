@@ -1,25 +1,25 @@
 :root {
-    --bg-color: var(--base-color-brand--brand-heading-text);
-    --input-bg: transparent;
-    --text-color: var(--base-color-brand--brand-bg);
-    --border-color: #fff;
-    --accent-color: var(--base-color-brand--brand-accent);
-    --title-font-family: sweet-gothic, sans-serif;
+  --bg-color: var(--base-color-brand--brand-heading-text);
+  --input-bg: transparent;
+  --text-color: var(--base-color-brand--brand-bg);
+  --border-color: #fff;
+  --accent-color: var(--base-color-brand--brand-accent);
+  --title-font-family: sweet-gothic, sans-serif;
 }
 
 .booking-form {
-    padding: 1.5rem;
-    color: var(--text-color);
-    display: flex;
-    gap: 2.5rem;
-    max-width: 1280px;
-    margin: 0 auto;
-    flex-direction: column;
-    flex-wrap: wrap;
+  padding: 1.5rem;
+  color: var(--text-color);
+  display: flex;
+  gap: 2.5rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .booking-form * {
-    font-style: normal;
+  font-style: normal;
 }
 
 .booking-form .form-group {
