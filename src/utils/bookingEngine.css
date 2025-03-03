@@ -22,12 +22,12 @@
     font-style: normal;
 }
 
-.form-group {
+.booking-form .form-group {
     flex: 1;
     min-width: 177px;
 }
 
-.form-group label {
+.booking-form .form-group label {
     display: block;
     font-size: 0.9rem;
     flex: 100%;
@@ -35,9 +35,9 @@
     font-weight: 600;
 }
 
-.date-input,
-select,
-input[type="text"] {
+.booking-form .date-input,
+.booking-form select,
+.booking-form input[type="text"] {
     width: 100%;
     padding: 0.15rem 0;
     background: var(--input-bg);
@@ -49,17 +49,17 @@ input[type="text"] {
     font-size: 1.2rem;
 }
 
-.date-input::placeholder {
+.booking-form .date-input::placeholder {
     text-transform: uppercase;
     font-family: var(--title-font-family) !important;
     font-weight: 700;
 }
 
-input[type="text"]::placeholder {
+.booking-form input[type="text"]::placeholder {
     color: var(--text-color);
 }
 
-.date-input::-webkit-calendar-picker-indicator {
+.booking-form .date-input::-webkit-calendar-picker-indicator {
     opacity: 0;
     position: absolute;
     right: 0;
@@ -72,7 +72,7 @@ input[type="text"]::placeholder {
     font-weight: 700;
 }
 
-.book-now {
+.booking-form .book-now {
     padding: 1rem 2rem;
     border: none;    
     cursor: pointer;
@@ -84,7 +84,7 @@ input[type="text"]::placeholder {
     font-size: 1.5rem;
 }
 
-select {
+.booking-form select {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -95,7 +95,7 @@ select {
     font-family: var(--title-font-family);
 }
 
-.date-input {
+.booking-form .date-input {
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -115,24 +115,25 @@ select {
         padding: 2rem;
         gap: 1.5rem;
     }
-    .book-now {
+    .booking-form .book-now {
         width: auto;
         padding: 1rem 1.75rem;
         font-size: 1rem;
+        border-color: var(--base-color-brand--brand-accent);
     }
-    .form-group label {
+    .booking-form .form-group label {
         margin-bottom: 0.5rem;        
     }
 }
 
 @media (max-width: 768px) {
-    .button.book-now {
+    .booking-form .book-now {
         background-color: #fff;
         color: var(--accent-color);
     }
 
-    .book-now:hover,
-    .book-now:focus {
+    .booking-form .book-now:hover,
+    .booking-form .book-now:focus {
         background-color: var(--accent-color);
         color: #fff !important;
         border-color: #fff;
