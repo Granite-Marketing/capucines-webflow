@@ -6,7 +6,7 @@ export const roomsHeroAnimation = () => {
   const heroStats = document.querySelectorAll('.sticky-hero_sub-richtext li');
   const heroButton = document.querySelector('.sticky-hero_button-wrapper .button');
   const heroModalButton = document.querySelector('.sticky-hero_footer .cta-simple');
-  if (!heroTitle || !heroSubtitle || !heroStats || !heroButton || !heroModalButton) return;
+  if (!heroTitle || !heroSubtitle || !heroStats) return;
   gsap.set([heroTitle, heroSubtitle, heroStats, heroButton, heroModalButton], {
     opacity: 0,
   });
