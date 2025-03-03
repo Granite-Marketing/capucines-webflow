@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.23
+
+### Patch Changes
+
+- 04b3aa6: booking form fixes
+
 ## 1.0.22
 
 ### Patch Changes
