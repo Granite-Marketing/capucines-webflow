@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.25
+
+### Patch Changes
+
+- 1b1ff4a: make rooms hero animation trigger easier
+
 ## 1.0.24
 
 ### Patch Changes
