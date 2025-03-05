@@ -34,6 +34,7 @@ export const stickySection = () => {
     const innerSection = stickySection?.querySelector('.sticky-hero_component.is-square');
 
     const stepSize = 1 / imagesArray.length;
+    const steps = imagesArray.length;
 
     gsap.set(imagesArray, { opacity: 0 });
     gsap.set(imagesArray[0], { opacity: 1 }); // Make last image visible initially
@@ -45,9 +46,9 @@ export const stickySection = () => {
     ScrollTrigger.create({
       trigger: isSquare ? innerSection : stickySection,
       start: 'top top',
-      end: `+=${100 * stepSize}%`,
+      end: `+=${100 * steps}%`,
       pin: stickySection,
-      markers: false,
+      markers: true,
       scrub: true,
       onUpdate: (self) => {
         const { progress } = self;

@@ -3,14 +3,19 @@
 
 import { accordion } from '$utils/accordion';
 import { bgAccordion } from '$utils/bgAccordion';
+import { bookingModal } from '$utils/bookingModal';
 import { buttonAnimation } from '$utils/buttonAnimation';
 import { experiences } from '$utils/experiences';
+import { gaTagging } from '$utils/gaTagging';
+import { gsapBasicAnimations } from '$utils/gsapBasicAnimations';
 import { gsapSmoothScroll } from '$utils/gsapSmoothScroll';
 import { header } from '$utils/header';
+import { homeAlternativeHero } from '$utils/homeAlternativeHero';
 import { homeMain } from '$utils/homeMain';
 import { linesAnimation } from '$utils/linesAnimation';
 import { initMap } from '$utils/map';
 import { mapNeeds } from '$utils/mapNeeds';
+import { popupModal } from '$utils/popupModal';
 // import { popup } from '$utils/popup';
 import { roomIndiv } from '$utils/roomIndiv';
 import { roomsHeroAnimation } from '$utils/roomsHeroAnimation';
@@ -20,11 +25,6 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
-import { popupModal } from '$utils/popupModal';
-import { bookingModal } from '$utils/bookingModal';
-import { homeAlternativeHero } from '$utils/homeAlternativeHero';
-import { gaTagging } from '$utils/gaTagging';
-import { gsapBasicAnimations } from '$utils/gsapBasicAnimations';
 
 window.Webflow = window.Webflow || [];
 
@@ -54,7 +54,7 @@ window.Webflow.push(() => {
     gsapBasicAnimations();
     gaTagging();
     setTimeout(() => initMap(), 1000);
-    document.querySelectorAll(".js-loading").forEach(item => {
+    document.querySelectorAll('.js-loading').forEach((item) => {
       item.classList.remove('js-loading');
     });
   }, 100);
