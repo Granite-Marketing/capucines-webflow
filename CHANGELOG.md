@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.26
+
+### Patch Changes
+
+- 32ef1b4: rooms image fixes
+
 ## 1.0.25
 
 ### Patch Changes
