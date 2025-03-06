@@ -5,6 +5,12 @@ const isMobile = window.matchMedia('(max-width: 767px)');
 const swiperArr = [];
 
 export const stickyHero = () => {
+  const block = document.querySelector('.section_sticky-hero.js-destkop-slider');
+  if (block) {
+    stickyHeroSwiper();
+    return;
+  }
+
   if (isMobile.matches) {
     console.log('init swiper');
     stickyHeroSwiper();

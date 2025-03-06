@@ -4,6 +4,10 @@ import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
 export const stickySection = () => {
+  const block = document.querySelector('.section_sticky-hero.js-destkop-slider');
+
+  if (block) return;
+
   const stickySection = document.querySelector('.section_sticky-hero');
   const stickyImages = document.querySelectorAll('.sticky-hero_item-figure');
   const checkPoint = document.querySelector(
