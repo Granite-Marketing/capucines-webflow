@@ -48,7 +48,7 @@ export const stickySection = () => {
       start: 'top top',
       end: `+=${100 * steps}%`,
       pin: stickySection,
-      markers: true,
+      // markers: true,
       scrub: true,
       onUpdate: (self) => {
         const { progress } = self;
