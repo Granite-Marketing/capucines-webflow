@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.28
+
+### Patch Changes
+
+- 3f24f2c: remove markers
+
 ## 1.0.27
 
 ### Patch Changes
