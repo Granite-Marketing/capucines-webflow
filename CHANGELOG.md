@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.29
+
+### Patch Changes
+
+- f17a6f4: slider stickt section
+
 ## 1.0.28
 
 ### Patch Changes
