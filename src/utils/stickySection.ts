@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger);
 
 export const stickySection = () => {
-  const block = document.querySelector('.section_sticky-hero.js-destkop-slider');
+  const block = document.querySelector('.section_sticky-hero.js-desktop-slider');
 
   if (block) return;
 
