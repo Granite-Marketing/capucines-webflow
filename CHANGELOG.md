@@ -1,5 +1,12 @@
 # @granite-marketing/editoria
 
+## 1.0.30
+
+### Patch Changes
+
+- a1d49b6: remove comments for ga4
+- 394f4cb: ga4 tracking updates
+
 ## 1.0.29
 
 ### Patch Changes
