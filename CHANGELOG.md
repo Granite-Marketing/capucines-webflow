@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.31
+
+### Patch Changes
+
+- 992066b: optimise ga4 code
+
 ## 1.0.30
 
 ### Patch Changes
