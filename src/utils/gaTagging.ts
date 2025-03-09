@@ -10,6 +10,8 @@ export const gaTagging = () => {
       if (!gaTarget) return;
       link.setAttribute(gaTarget, '');      
       const sectionClass = getSectionClass(link as HTMLElement, index + 1);
+      console.log(sectionClass);
+      
       // Add click listener
       link.addEventListener('click', (e) => {
         const element = e.currentTarget as HTMLElement;
@@ -39,6 +41,7 @@ export const gaTagging = () => {
     navBookingButton.setAttribute(trackingAttr, '');
     navBookingButton.removeAttribute('book-nav');
     const sectionClass = getSectionClass(navBookingButton as HTMLElement, 1);
+    console.log(sectionClass);
     navBookingButton.addEventListener('click', (e) => {
       const element = e.currentTarget as HTMLElement;
       window.dataLayer.push({
@@ -57,11 +60,11 @@ export const gaTagging = () => {
   const bookNowButtons = document.querySelectorAll('[ga4-inner]');
 
   // Set the attribute on all Book Now buttons and add tracking
-  let i = 1;
-  bookNowButtons.forEach((button) => {
-    const trackingAttr = `book-room-${pageName}-sec${i}`;
+  bookNowButtons.forEach((button, index) => {
+    const trackingAttr = `book-room-${pageName}-sec${index + 1}`;
     button.setAttribute(trackingAttr, '');
-    const sectionClass = getSectionClass(button as HTMLElement, i);
+    const sectionClass = getSectionClass(button as HTMLElement, index + 1);
+    console.log(sectionClass);
     
     button.addEventListener('click', (e) => {
       const element = e.currentTarget as HTMLElement;
@@ -75,8 +78,6 @@ export const gaTagging = () => {
         'trackingAttribute': trackingAttr,
       });
     });
-    
-    i++;
   });
 };
 
