@@ -4,6 +4,7 @@ export const popupModal = () => {
     if (modalWrapper) {
       const modal = modalWrapper.querySelector(".pop-up-wrapper");
       const overlay = modalWrapper.querySelector(".overlay-bg");
+      const closeButton = modalWrapper.querySelector(".close-modal-button");
       // Get the duration from the data attribute, default to 1 day if not set
       const duration = parseInt(modal.getAttribute("data-duration")) || 1;
       const lastShown = localStorage.getItem("modalLastShown");
@@ -16,14 +17,19 @@ export const popupModal = () => {
         
         setTimeout(() => {
           localStorage.setItem("modalLastShown", now);
-          overlay.classList.remove("hide");
-          overlay.setAttribute("aria-hidden", "false");
+          modalWrapper.classList.remove("hide");
+          modalWrapper.setAttribute("aria-hidden", "false");
         }, displayTime * 1000);
       }
   
       overlay.addEventListener("click", () => {
-        overlay.classList.add("hide");
-        overlay.setAttribute("aria-hidden", "true");
+        modalWrapper.classList.add("hide");
+        modalWrapper.setAttribute("aria-hidden", "true");
+      });
+
+      closeButton?.addEventListener("click", () => {
+        modalWrapper.classList.add("hide");
+        modalWrapper.setAttribute("aria-hidden", "true");
       });
     }
   }

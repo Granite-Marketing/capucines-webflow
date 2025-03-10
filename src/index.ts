@@ -25,7 +25,7 @@ import { stickySection } from '$utils/stickySection';
 import { stickyText } from '$utils/stickyText';
 import { swiperSliders } from '$utils/swiperSliders';
 import { textMask } from '$utils/textMask';
-
+import { bookingButtonOnScroll } from '$utils/bookingButtonOnScoll';
 window.Webflow = window.Webflow || [];
 
 window.Webflow.push(() => {
@@ -53,6 +53,7 @@ window.Webflow.push(() => {
     homeAlternativeHero();
     gsapBasicAnimations();
     gaTagging();
+    bookingButtonOnScroll();
     setTimeout(() => initMap(), 1000);
     document.querySelectorAll('.js-loading').forEach((item) => {
       item.classList.remove('js-loading');
