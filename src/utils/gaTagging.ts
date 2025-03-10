@@ -1,30 +1,61 @@
+interface BookNowClickData {
+  event: string;
+  buttonText: string;
+  buttonURL: string;
+  buttonID: string;
+  buttonClass: string;
+  section: string;
+  trackingAttribute: string;
+}
+
+function addBookNowClickTracking(
+  element: HTMLElement,
+  trackingAttr: string,
+  index: number
+) {
+  const sectionClass = getSectionClass(element, index);
+  
+  element.addEventListener('click', (e) => {
+    const target = e.currentTarget as HTMLElement;
+    const data: BookNowClickData = {
+      'event': 'book_now_click',
+      'buttonText': target.textContent?.trim() || '',
+      'buttonURL': (target as HTMLAnchorElement).href || '',
+      'buttonID': target.id || '',
+      'buttonClass': target.className,
+      'section': sectionClass || '',
+      'trackingAttribute': trackingAttr
+    };
+    window.dataLayer.push(data);
+  });
+}
+
 export const gaTagging = () => {
   // Initialize data layer if it doesn't exist
   window.dataLayer = window.dataLayer || [];
+
+  // for nav button
+  const siteWideNavButton = document.querySelector('[rooms-page="false"]');
+  if (siteWideNavButton) {
+    const trackingAttr = "book-nav";
+    addBookNowClickTracking(siteWideNavButton as HTMLElement, trackingAttr, 1);
+  }
+
+  // for floating booking button
+  const floatingBookingButton = document.querySelector('#floating-button');
+  if (floatingBookingButton) {    
+    const trackingAttr = "book-sticky";
+    addBookNowClickTracking(floatingBookingButton as HTMLElement, trackingAttr, 1);
+  }
 
   // for listing pages
   const targetLinks = document.querySelectorAll('[ga4]');
   if (targetLinks) {
     targetLinks.forEach((link, index) => {
-      const gaTarget = link.getAttribute('ga4');
-      if (!gaTarget) return;
-      link.setAttribute(gaTarget, '');      
-      const sectionClass = getSectionClass(link as HTMLElement, index + 1);
-      console.log(sectionClass);
-      
-      // Add click listener
-      link.addEventListener('click', (e) => {
-        const element = e.currentTarget as HTMLElement;
-        window.dataLayer.push({
-          'event': 'book_now_click',
-          'buttonText': element.textContent?.trim() || '',
-          'buttonURL': (element as HTMLAnchorElement).href || '',
-          'buttonID': element.id || '',
-          'buttonClass': element.className,
-          'section': sectionClass,
-          'trackingAttribute': gaTarget
-        });
-      });
+      const trackingAttr = link.getAttribute('ga4');
+      if (!trackingAttr) return;
+      link.setAttribute(trackingAttr, '');      
+      addBookNowClickTracking(link as HTMLElement, trackingAttr, index + 1);
     });
   }
 
@@ -40,20 +71,7 @@ export const gaTagging = () => {
     const trackingAttr = `book-room-${pageName}-nav`;
     navBookingButton.setAttribute(trackingAttr, '');
     navBookingButton.removeAttribute('book-nav');
-    const sectionClass = getSectionClass(navBookingButton as HTMLElement, 1);
-    console.log(sectionClass);
-    navBookingButton.addEventListener('click', (e) => {
-      const element = e.currentTarget as HTMLElement;
-      window.dataLayer.push({
-        'event': 'book_now_click',
-        'buttonText': element.textContent?.trim() || '',
-        'buttonURL': (element as HTMLAnchorElement).href || '',
-        'buttonID': element.id || '',
-        'buttonClass': element.className,
-        'section': sectionClass,
-        'trackingAttribute': trackingAttr,
-      });
-    });
+    addBookNowClickTracking(navBookingButton as HTMLElement, trackingAttr, 1);
   }
 
   // detail pages booking button targets
@@ -63,21 +81,7 @@ export const gaTagging = () => {
   bookNowButtons.forEach((button, index) => {
     const trackingAttr = `book-room-${pageName}-sec${index + 1}`;
     button.setAttribute(trackingAttr, '');
-    const sectionClass = getSectionClass(button as HTMLElement, index + 1);
-    console.log(sectionClass);
-    
-    button.addEventListener('click', (e) => {
-      const element = e.currentTarget as HTMLElement;
-      window.dataLayer.push({
-        'event': 'book_now_click',
-        'buttonText': element.textContent?.trim() || '',
-        'buttonURL': (element as HTMLAnchorElement).href || '',
-        'buttonID': element.id || '',
-        'buttonClass': element.className,
-        'section': sectionClass,
-        'trackingAttribute': trackingAttr,
-      });
-    });
+    addBookNowClickTracking(button as HTMLElement, trackingAttr, index + 1);
   });
 };
 
