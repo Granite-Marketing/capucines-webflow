@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.33
+
+### Patch Changes
+
+- b973dce: add ga4 forcing
+
 ## 1.0.32
 
 ### Patch Changes
