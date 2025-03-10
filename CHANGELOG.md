@@ -1,5 +1,12 @@
 # @granite-marketing/editoria
 
+## 1.0.32
+
+### Patch Changes
+
+- 0eea70f: update popup modal code to include clsoe button
+- 0eea70f: booking button scroll updates
+
 ## 1.0.31
 
 ### Patch Changes
