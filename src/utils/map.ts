@@ -126,6 +126,11 @@ const createMarker = async (p, active, infoWindow) => {
     infoWindow.setContent(marker.title);
     infoWindow.open(marker.map, marker);
   });
+
+  if (p.unique) {
+    marker.targetElement.querySelector('svg').style.transform = 'scale(1.5)';
+    marker.targetElement.style.zIndex = '202020';
+  }
 };
 
 const mapInteractions = (positions, infoWindow) => {
@@ -149,6 +154,8 @@ const mapInteractions = (positions, infoWindow) => {
         let slug = active ? active.getAttribute('slug') : '';
 
         markers.forEach((m) => {
+          const uniquePin = positions.filter((p) => p.unique);
+          if (uniquePin.slug == m.slug) return;
           const styles =
             m.slug === slug
               ? {
@@ -164,6 +171,7 @@ const mapInteractions = (positions, infoWindow) => {
                   zIndex: '1',
                 };
           m.marker.targetElement.querySelector('svg').style.transform = styles.transform;
+          m.marker.targetElement.style.zIndex = styles.zIndex;
           m.marker.targetElement
             .querySelectorAll('svg path')
             .forEach((p) => (p.style.stroke = styles.stroke));
