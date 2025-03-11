@@ -5,18 +5,18 @@ var infoWindow;
 const colors = {
   normal: { bg: '#FFFDF7', line: '#272516' },
   active: { bg: '#272516', line: '#FFFDF7' },
+  unique: { bg: '#272516', line: '#FFFDF7' },
 };
 let pinSvgString = '';
 let activePinSvgString = '';
+let uniquePinSvgString = '';
 
 export const initMap = async () => {
   const mapEl = document.querySelector('.the-map');
   if (!mapEl) return;
   const positions = getPositions();
 
-  if (positions.length === 0) {
-    getDefaultPosition(mapEl, positions);
-  }
+  getDefaultPosition(mapEl, positions);
 
   // SET POSITIONS FOR MAP (EVERYTHING BE VISIBLE)
 
@@ -66,6 +66,7 @@ const getPositions = () => {
     lng = Number(lng);
     if (isNaN(lat) || isNaN(lng)) return;
     positions.push({
+      unique: false,
       name: name,
       slug: slug,
       position: {
@@ -87,6 +88,7 @@ const getDefaultPosition = (mapEl, positions) => {
   if (isNaN(lat) || isNaN(lng)) return;
   const name = mapEl.getAttribute('default-title') ?? 'No name';
   positions.push({
+    unique: true,
     name: name,
     position: {
       lat: lat,
@@ -104,7 +106,7 @@ const createMarker = async (p, active, infoWindow) => {
   const { AdvancedMarkerElement } = await google.maps.importLibrary('marker');
 
   const parser = new DOMParser();
-  let svgHtml = active ? activePinSvgString : pinSvgString;
+  let svgHtml = p.unique ? uniquePinSvgString : active ? activePinSvgString : pinSvgString;
   const pinSvg = parser.parseFromString(svgHtml, 'image/svg+xml').documentElement;
 
   const marker = new AdvancedMarkerElement({
@@ -182,11 +184,16 @@ const readPinColors = (mapEl) => {
   let c1 = mapEl.getAttribute('color-pin-line') ?? null;
   let c2 = mapEl.getAttribute('color-active-pin') ?? null;
   let c3 = mapEl.getAttribute('color-active-pin-line') ?? null;
+  let c4 = mapEl.getAttribute('color-unique-pin') ?? null;
+  console.log('hello', c4);
+  let c5 = mapEl.getAttribute('color-unique-pin-line') ?? null;
 
   if (c0) colors.normal.bg = c0;
   if (c1) colors.normal.line = c1;
   if (c2) colors.active.bg = c2;
   if (c3) colors.active.line = c3;
+  if (c4) colors.unique.bg = c4;
+  if (c5) colors.unique.line = c5;
 };
 
 const createPinSvgs = () => {
@@ -201,6 +208,12 @@ const createPinSvgs = () => {
 <circle cx="18" cy="18" r="18" fill="${colors.active.bg}" style="transition: fill 300ms ease-in-out"/>
 <path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="${colors.active.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
 <path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="${colors.active.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+</svg>
+`;
+  uniquePinSvgString = `<svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="transition: transform 300ms ease-in-out;">
+<circle cx="18" cy="18" r="18" fill="${colors.unique.bg}" style="transition: fill 300ms ease-in-out"/>
+<path d="M26 16.5555C26 22.7778 18 28.1111 18 28.1111C18 28.1111 10 22.7778 10 16.5555C10 14.4338 10.8429 12.399 12.3431 10.8987C13.8434 9.3984 15.8783 8.55554 18 8.55554C20.1217 8.55554 22.1566 9.3984 23.6569 10.8987C25.1571 12.399 26 14.4338 26 16.5555Z" stroke="${colors.unique.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
+<path d="M18.0002 19.2222C19.4729 19.2222 20.6668 18.0283 20.6668 16.5555C20.6668 15.0828 19.4729 13.8889 18.0002 13.8889C16.5274 13.8889 15.3335 15.0828 15.3335 16.5555C15.3335 18.0283 16.5274 19.2222 18.0002 19.2222Z" stroke="${colors.unique.line}" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 300ms ease-in-out"/>
 </svg>
 `;
 };
