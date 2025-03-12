@@ -1,13 +1,45 @@
 import Swiper from 'swiper';
 import { Autoplay, Pagination } from 'swiper/modules';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const isMobile = window.matchMedia('(max-width: 767px)');
+
 const swiperArr = [];
 
 export const stickyHero = () => {
   const block = document.querySelector('.section_sticky-hero.js-desktop-slider');
   if (block) {
     stickyHeroSwiper();
+    let mm = gsap.matchMedia();
+
+    mm.add(
+      {
+        isMobile: 'screen and (max-width: 767px)',
+        isDesktop: 'screen and (min-width: 768px)',
+      },
+      (context) => {
+        const { conditions } = context;
+
+        // add pinning for desktop
+        if (conditions.isDesktop) {
+          const imagesSide = document.querySelector('.sticky-hero_images-side');
+          if (imagesSide) {
+            gsap.to(imagesSide, {
+              scrollTrigger: {
+                trigger: ".section-sizer",
+                start: 'top top',
+                end: 'bottom bottom',
+                pin: imagesSide,
+                pinSpacing: true,
+                scrub: false
+              }
+            });
+          }
+        }
+      })    
     return;
   }
 
