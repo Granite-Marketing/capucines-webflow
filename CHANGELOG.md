@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.0
+
+### Major Changes
+
+- d200d63: final updates
+
 ## 1.0.36
 
 ### Patch Changes
