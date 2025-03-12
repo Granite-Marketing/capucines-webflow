@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.35
+
+### Patch Changes
+
+- 9634c30: invert area icons
+
 ## 1.0.34
 
 ### Patch Changes
