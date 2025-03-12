@@ -29,7 +29,7 @@ export const bookingButtonOnScroll = () => {
             scrollTrigger: {
                 trigger: ".page-wrapper",
                 endTrigger: ".section_cta",
-                start: "top top-=200",
+                start: "top top-=800",
                 end: "top bottom",
                 toggleActions: "play reverse play reverse",
             }
