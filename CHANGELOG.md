@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 1.0.36
+
+### Patch Changes
+
+- 08b17ea: add pinning to hero slider sticky section
+
 ## 1.0.35
 
 ### Patch Changes
