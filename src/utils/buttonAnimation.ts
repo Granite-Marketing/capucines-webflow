@@ -43,7 +43,7 @@ export const buttonAnimation = () => {
       position: 'relative',
     });
     gsap.set(cloneSplit.chars, {
-      yPercent: 200,
+      yPercent: 208,
     });
 
     const tl = gsap.timeline({ paused: true });
