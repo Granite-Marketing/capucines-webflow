@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.1
+
+### Patch Changes
+
+- afece13: book now button french fixes
+
 ## 2.0.0
 
 ### Major Changes
