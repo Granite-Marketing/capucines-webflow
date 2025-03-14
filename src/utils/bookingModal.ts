@@ -13,9 +13,8 @@ export const bookingModal = () => {
 
       mm.add(
         {
-          isMobile: 'screen and (max-width: 767px)',
+          isMobile: 'screen and (max-width: 991px)',
           isTablet: 'screen and (min-width: 992px)',
-          isDesktop: 'screen and (min-width: 768px)',
         },
         (context) => {
           const { conditions } = context;

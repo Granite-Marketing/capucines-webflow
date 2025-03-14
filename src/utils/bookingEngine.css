@@ -15,7 +15,7 @@ form {
   padding: 1.5rem;
   color: var(--text-color);
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   max-width: 1440px;
   margin: 0 auto;
   flex-direction: column;
@@ -51,8 +51,12 @@ form {
     color: var(--text-color);
     font-family: var(--title-font-family) !important;
     font-weight: 700;
-    font-size: 1.2rem;
+    font-size: 1rem;
     flex-grow: 1;
+    text-align: left !important;
+}
+
+.booking-form .date-input::-webkit-date-and-time-value {
     text-align: left !important;
 }
 
@@ -121,7 +125,7 @@ form {
         align-items: flex-end;
         background-color: transparent;
         padding: 2rem;
-        gap: 1rem;
+        gap: 1.5rem;
     }
     .booking-form .book-now {
         width: auto;
@@ -139,6 +143,11 @@ form {
     .booking-form .form-group label {
         margin-bottom: 0.5rem;        
     }
+    .booking-form .date-input,
+    .booking-form select,
+    .booking-form input[type="text"] {
+        font-size: 1.2rem;
+    }    
 }
 
 @media (max-width: 991px) {
