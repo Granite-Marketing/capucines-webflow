@@ -7,6 +7,8 @@ export const bookingModal = () => {
       const modalCloseButton = modal.querySelector(".close-modal");
       const modalOpenButton = document.querySelector(".open-modal");
       const overlay = modal.querySelector(".modal-overlay");
+      const cookies = document.querySelector(".fs-consent_open-prefs");
+      const chatBot = document.querySelector(".hi-widget-container");
       let mm = gsap.matchMedia();
 
       mm.add(
@@ -30,11 +32,15 @@ export const bookingModal = () => {
       function closeModal() {
         overlay.style.visibility = "hidden";        
         modal.style.visibility = "hidden";        
+        cookies.style.visibility = "visible";
+        chatBot.style.visibility = "visible";
       }
   
       function openModal() {
         overlay.style.visibility = "visible";        
         modal.style.visibility = "visible";              
+        cookies.style.visibility = "hidden";
+        chatBot.style.visibility = "hidden";
       }
 
       overlay.addEventListener("click", () => {
