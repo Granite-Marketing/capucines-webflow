@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.7
+
+### Patch Changes
+
+- 03518cb: fix booking bug
+
 ## 2.0.6
 
 ### Patch Changes
