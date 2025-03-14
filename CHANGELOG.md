@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.5
+
+### Patch Changes
+
+- d2104b4: update maps api key
+
 ## 2.0.4
 
 ### Patch Changes
