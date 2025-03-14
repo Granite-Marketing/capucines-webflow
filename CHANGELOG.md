@@ -1,5 +1,13 @@
 # @granite-marketing/editoria
 
+## 2.0.8
+
+### Patch Changes
+
+- d1e63a1: test
+- a524de9: remove test
+- 7b88b79: final fix
+
 ## 2.0.7
 
 ### Patch Changes
