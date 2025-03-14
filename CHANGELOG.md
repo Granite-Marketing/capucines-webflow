@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.6
+
+### Patch Changes
+
+- 6bc48b9: update booking engine breakpoints
+
 ## 2.0.5
 
 ### Patch Changes
