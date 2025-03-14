@@ -7,6 +7,10 @@
   --title-font-family: sweet-gothic, sans-serif;
 }
 
+form {
+    height: 100%;
+}
+
 .booking-form {
   padding: 1.5rem;
   color: var(--text-color);
@@ -16,6 +20,7 @@
   margin: 0 auto;
   flex-direction: column;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .booking-form * {

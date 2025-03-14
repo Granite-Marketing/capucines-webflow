@@ -1,14 +1,14 @@
 import { gsap } from "gsap";
 
 export const bookingModal = () => {    
-    const modal = document.querySelector(".hero_booking-engine-wrapper");
+    const modal = document.querySelector<HTMLElement>(".hero_booking-engine-wrapper");
     
     if (modal) {      
-      const modalCloseButton = modal.querySelector(".close-modal");
-      const modalOpenButton = document.querySelector(".open-modal");
-      const overlay = modal.querySelector(".modal-overlay");
-      const cookies = document.querySelector(".fs-consent_open-prefs");
-      const chatBot = document.querySelector(".hi-widget-container");
+      const modalCloseButton = modal.querySelector<HTMLElement>(".close-modal");
+      const modalOpenButton = document.querySelector<HTMLElement>(".open-modal");
+      const overlay = modal.querySelector<HTMLElement>(".modal-overlay");
+      const cookies = document.querySelector<HTMLElement>(".fs-consent_open-prefs");
+      const chatBot = document.querySelector<HTMLElement>(".hi-widget-container");
       let mm = gsap.matchMedia();
 
       mm.add(
@@ -17,42 +17,38 @@ export const bookingModal = () => {
           isDesktop: 'screen and (min-width: 768px)',
         },
         (context) => {
-          let { isMobile, isDesktop } = context.conditions;
+          const { conditions } = context;
 
-          if (isMobile) {
+          if (conditions?.isDesktop) {
+            showModal();
+          } else {
             closeModal();
-          }
-
-          if (isDesktop) {
-            openModal();
           }
         }
       );
   
-      function closeModal() {
-        overlay.style.visibility = "hidden";        
-        modal.style.visibility = "hidden";        
-        cookies.style.visibility = "visible";
-        chatBot.style.visibility = "visible";
+      function closeModal() {   
+        if (overlay) overlay.style.visibility = "hidden";        
+        if (modal) modal.style.visibility = "hidden";        
+        if (cookies) cookies.style.visibility = "visible";
+        if (chatBot) chatBot.style.visibility = "visible";
       }
   
       function openModal() {
-        overlay.style.visibility = "visible";        
-        modal.style.visibility = "visible";              
-        cookies.style.visibility = "hidden";
-        chatBot.style.visibility = "hidden";
+        if (overlay) overlay.style.visibility = "visible";        
+        if (modal) modal.style.visibility = "visible";              
+        if (cookies) cookies.style.visibility = "hidden";
+        if (chatBot) chatBot.style.visibility = "hidden";
+      }
+      function showModal() {
+        if (overlay) overlay.style.visibility = "visible";        
+        if (modal) modal.style.visibility = "visible";              
+        if (cookies) cookies.style.visibility = "visible";
+        if (chatBot) chatBot.style.visibility = "visible";
       }
 
-      overlay.addEventListener("click", () => {
-         closeModal();   
-      });
-
-      modalCloseButton.addEventListener("click", () => {
-        closeModal();
-      });
-
-      modalOpenButton.addEventListener("click", () => {
-        openModal();
-      });        
+      overlay?.addEventListener("click", closeModal);
+      modalCloseButton?.addEventListener("click", closeModal);
+      modalOpenButton?.addEventListener("click", openModal);
     }
 }
