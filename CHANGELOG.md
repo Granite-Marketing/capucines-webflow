@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.3
+
+### Patch Changes
+
+- 1dd3497: booking alignemnt
+
 ## 2.0.2
 
 ### Patch Changes
