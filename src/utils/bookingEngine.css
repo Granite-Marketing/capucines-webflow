@@ -53,6 +53,7 @@
     text-transform: uppercase;
     font-family: var(--title-font-family) !important;
     font-weight: 700;
+    text-align: left !important;
 }
 
 .booking-form input[type="text"]::placeholder {
