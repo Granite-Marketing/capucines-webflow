@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.9
+
+### Patch Changes
+
+- 9a33ebf: floating button fixes
+
 ## 2.0.8
 
 ### Patch Changes
