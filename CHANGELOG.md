@@ -1,5 +1,12 @@
 # @granite-marketing/editoria
 
+## 2.0.2
+
+### Patch Changes
+
+- 29046f6: popup hide overlays
+- 390d881: form text alginment
+
 ## 2.0.1
 
 ### Patch Changes
