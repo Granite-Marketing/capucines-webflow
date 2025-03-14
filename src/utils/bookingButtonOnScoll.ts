@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 export const bookingButtonOnScroll = () => {
-    const bookingButton = document.querySelector("#floating-button");
+    const bookingButton = document.querySelector(".section_floating-booking-button");
     const footerElement = document.querySelector(".section_cta");
     
     if (!bookingButton || !footerElement) return;
