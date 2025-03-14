@@ -14,12 +14,13 @@ export const bookingModal = () => {
       mm.add(
         {
           isMobile: 'screen and (max-width: 767px)',
+          isTablet: 'screen and (min-width: 992px)',
           isDesktop: 'screen and (min-width: 768px)',
         },
         (context) => {
           const { conditions } = context;
 
-          if (conditions?.isDesktop) {
+          if (conditions?.isTablet) {
             showModal();
           } else {
             closeModal();
