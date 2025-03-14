@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.4
+
+### Patch Changes
+
+- 136d18a: fix modal type issues
+
 ## 2.0.3
 
 ### Patch Changes
