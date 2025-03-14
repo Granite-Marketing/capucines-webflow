@@ -47,6 +47,7 @@
     font-family: var(--title-font-family) !important;
     font-weight: 700;
     font-size: 1.2rem;
+    text-align: left !important;
 }
 
 .booking-form .date-input::placeholder {
