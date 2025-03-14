@@ -56,6 +56,10 @@ form {
     text-align: left !important;
 }
 
+.booking-form .date-input::-webkit-date-and-time-value {
+    text-align: left !important;
+}
+
 .booking-form .date-input::placeholder {
     text-transform: uppercase;
     font-family: var(--title-font-family) !important;
