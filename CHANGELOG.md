@@ -1,5 +1,12 @@
 # @granite-marketing/editoria
 
+## 2.0.10
+
+### Patch Changes
+
+- 7741047: booking form transition fix
+- 7741047: booking colour updates desktop
+
 ## 2.0.9
 
 ### Patch Changes
