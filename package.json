@@ -1,8 +1,8 @@
 {
-  "name": "@granite-marketing/editoria",
+  "name": "@granite-marketing/capucines-webflow",
   "version": "2.0.10",
-  "description": "Editoria Webflow animations.",
-  "homepage": "https://github.com/Granite-Marketing/developer-starter#readme",
+  "description": "Capucines Webflow animations.",
+  "homepage": "https://github.com/Granite-Marketing/capucines-webflow#readme",
   "license": "ISC",
   "keywords": [],
   "author": {
@@ -11,10 +11,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Granite-Marketing/developer-starter.git"
+    "url": "git+https://github.com/Granite-Marketing/capucines-webflow.git"
   },
   "bugs": {
-    "url": "https://github.com/Granite-Marketing/developer-starter/issues"
+    "url": "https://github.com/Granite-Marketing/capucines-webflow/issues"
   },
   "type": "module",
   "main": "src/index.ts",
