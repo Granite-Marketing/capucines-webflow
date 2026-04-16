@@ -3,9 +3,9 @@ let map;
 const markers = [];
 var infoWindow;
 const colors = {
-  normal: { bg: '#FFFDF7', line: '#272516' },
-  active: { bg: '#272516', line: '#FFFDF7' },
-  unique: { bg: '#272516', line: '#FFFDF7' },
+  normal: { bg: '#F3F7E7', line: '#FFFFFF' },
+  active: { bg: '#79AB88', line: '#FFFFFF' },
+  unique: { bg: '#79AB88', line: '#FFFFFF' },
 };
 let pinSvgString = '';
 let activePinSvgString = '';
@@ -193,7 +193,6 @@ const readPinColors = (mapEl) => {
   let c2 = mapEl.getAttribute('color-active-pin') ?? null;
   let c3 = mapEl.getAttribute('color-active-pin-line') ?? null;
   let c4 = mapEl.getAttribute('color-unique-pin') ?? null;
-  console.log('hello', c4);
   let c5 = mapEl.getAttribute('color-unique-pin-line') ?? null;
 
   if (c0) colors.normal.bg = c0;

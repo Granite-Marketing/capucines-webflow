@@ -1,5 +1,11 @@
 # @granite-marketing/editoria
 
+## 2.0.11
+
+### Patch Changes
+
+- Update map pin colors to the new Capucines palette and remove a leftover debug log.
+
 ## 2.0.10
 
 ### Patch Changes
