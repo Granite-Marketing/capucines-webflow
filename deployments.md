@@ -16,10 +16,12 @@ The previous `release.yml` workflow used `NPM_TOKEN` to publish to the npm regis
 
 Run from the repo root on an up-to-date `master`.
 
+> **`dist/` is committed on purpose.** jsDelivr serves `dist/index.js` straight from the tagged commit, so if `dist/` is missing or stale at the tag the release is broken. Always build fresh before committing.
+
 ```bash
 # 1. Make your code changes in src/
 
-# 2. Build
+# 2. Build (refreshes dist/ — this is the artifact jsDelivr serves)
 pnpm run build
 
 # 3. Create a changeset (interactive prompt)
@@ -57,6 +59,7 @@ git push --tags
 
 ## Troubleshooting
 
+- **jsDelivr 404s on `dist/index.js` for a new tag.** Either propagation is still in progress (wait ~3 min) or `dist/` wasn't committed on the tag commit. Check with `git ls-tree <tag> -- dist`; if empty, rebuild, `git add dist/`, amend or cut a new patch, and re-tag.
 - **`pnpm changeset version` did not create a tag.** This happens intermittently. Read the version from `package.json` and tag it manually (step 6), then continue.
 - **`git push --tags` fails auth.** Re-authenticate (`gh auth login` or refresh the credential helper) and retry. Do not skip this step — if the tag is not on GitHub, jsDelivr cannot serve that version.
 - **jsDelivr returns 404 or stale content.** Wait 2–3 minutes after the tag lands. jsDelivr caches aggressively; if you need a cache purge, use `https://purge.jsdelivr.net/gh/Granite-Marketing/capucines-webflow@vX.Y.Z/dist/index.js`.
